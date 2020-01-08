@@ -12,7 +12,7 @@ public class Main {
 		carro.setAno(2000);
 		aviao.setUso("publico");
 		
-	
+		System.out.println(aviao.getPassageiros());
 	}
 
 }

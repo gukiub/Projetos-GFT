@@ -4,13 +4,13 @@ public class Veiculo {
 	private String modelo;
 	private int velocidade;
 	private int litrosCombustivel;
-	private String passageiros;
+	private int passageiros;
 
 	public Veiculo(String modelo, int velocidade, int passageiros, int litrosCombustivel) {
 		this.modelo = modelo;
 		this.velocidade = velocidade;
 		this.litrosCombustivel = litrosCombustivel;
-		this.velocidade = velocidade;
+		this.passageiros = passageiros;
 	}
 
 	public String getModelo() {
@@ -37,11 +37,11 @@ public class Veiculo {
 		this.velocidade = velocidade;
 	}
 
-	public String getPassageiros() {
+	public int getPassageiros() {
 		return passageiros;
 	}
 
-	public void setPassageiros(String passageiros) {
+	public void setPassageiros(int passageiros) {
 		this.passageiros = passageiros;
 	}
 
