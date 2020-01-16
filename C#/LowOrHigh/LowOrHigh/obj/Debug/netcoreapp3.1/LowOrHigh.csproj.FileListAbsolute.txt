@@ -1,0 +1,11 @@
+C:\Users\GOLS\source\repos\LowOrHigh\LowOrHigh\bin\Debug\netcoreapp3.1\LowOrHigh.exe
+C:\Users\GOLS\source\repos\LowOrHigh\LowOrHigh\bin\Debug\netcoreapp3.1\LowOrHigh.deps.json
+C:\Users\GOLS\source\repos\LowOrHigh\LowOrHigh\bin\Debug\netcoreapp3.1\LowOrHigh.runtimeconfig.json
+C:\Users\GOLS\source\repos\LowOrHigh\LowOrHigh\bin\Debug\netcoreapp3.1\LowOrHigh.runtimeconfig.dev.json
+C:\Users\GOLS\source\repos\LowOrHigh\LowOrHigh\bin\Debug\netcoreapp3.1\LowOrHigh.dll
+C:\Users\GOLS\source\repos\LowOrHigh\LowOrHigh\bin\Debug\netcoreapp3.1\LowOrHigh.pdb
+C:\Users\GOLS\source\repos\LowOrHigh\LowOrHigh\obj\Debug\netcoreapp3.1\LowOrHigh.csprojAssemblyReference.cache
+C:\Users\GOLS\source\repos\LowOrHigh\LowOrHigh\obj\Debug\netcoreapp3.1\LowOrHigh.AssemblyInfoInputs.cache
+C:\Users\GOLS\source\repos\LowOrHigh\LowOrHigh\obj\Debug\netcoreapp3.1\LowOrHigh.AssemblyInfo.cs
+C:\Users\GOLS\source\repos\LowOrHigh\LowOrHigh\obj\Debug\netcoreapp3.1\LowOrHigh.dll
+C:\Users\GOLS\source\repos\LowOrHigh\LowOrHigh\obj\Debug\netcoreapp3.1\LowOrHigh.pdb

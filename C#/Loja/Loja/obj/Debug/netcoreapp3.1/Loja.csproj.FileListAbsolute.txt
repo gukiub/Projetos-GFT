@@ -1,0 +1,11 @@
+C:\Users\GOLS\source\repos\Loja\Loja\obj\Debug\netcoreapp3.1\Loja.csprojAssemblyReference.cache
+C:\Users\GOLS\source\repos\Loja\Loja\obj\Debug\netcoreapp3.1\Loja.AssemblyInfoInputs.cache
+C:\Users\GOLS\source\repos\Loja\Loja\obj\Debug\netcoreapp3.1\Loja.AssemblyInfo.cs
+C:\Users\GOLS\source\repos\Loja\Loja\bin\Debug\netcoreapp3.1\Loja.exe
+C:\Users\GOLS\source\repos\Loja\Loja\bin\Debug\netcoreapp3.1\Loja.deps.json
+C:\Users\GOLS\source\repos\Loja\Loja\bin\Debug\netcoreapp3.1\Loja.runtimeconfig.json
+C:\Users\GOLS\source\repos\Loja\Loja\bin\Debug\netcoreapp3.1\Loja.runtimeconfig.dev.json
+C:\Users\GOLS\source\repos\Loja\Loja\bin\Debug\netcoreapp3.1\Loja.dll
+C:\Users\GOLS\source\repos\Loja\Loja\bin\Debug\netcoreapp3.1\Loja.pdb
+C:\Users\GOLS\source\repos\Loja\Loja\obj\Debug\netcoreapp3.1\Loja.dll
+C:\Users\GOLS\source\repos\Loja\Loja\obj\Debug\netcoreapp3.1\Loja.pdb
