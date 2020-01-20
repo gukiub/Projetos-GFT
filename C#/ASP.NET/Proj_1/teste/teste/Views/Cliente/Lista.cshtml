@@ -1,0 +1,24 @@
+﻿@model List<teste.Models.Cliente>
+@{
+    ViewBag.Title = "Lista";
+}
+
+    <h2>Lista</h2>
+
+@foreach (var cliente in Model)
+{
+    <li>@Html.DisplayFor(Model => cliente.Nome) @Html.DisplayFor(Model => cliente.SobreNome)</li>
+}
+
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+            $("li").click(function () {
+                $(this).hide();
+            });
+        });
+    </script>
+    
+}
+
