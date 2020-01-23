@@ -1,0 +1,35 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+
+    
+}
+
+<div class="jumbotron text-center" >
+    <h1>Gustavo Lafant</h1>
+    <p class="lead">Estagiário</p>
+    <p><a href="@Url.Action("Projetos", "Home")" class="btn btn-lg"><img src="~/Content/Img/eu.jpg" class="img-circle" width="300px"></a></p>
+        <h2>Um pouco sobre mim</h2>
+        Um estágiario á procura de desenvolver suas habilidades e crescer profissionalmente, realizando projetos de diferentes linguagens e sempre com determinação.
+    Minhas Linguagens favoritas são Java, Android e python, Amo desafios e também resolver problemas.
+    
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <h2>Meus Projetos</h2>
+        <p>
+            Um estagiário no primeiro emprego. Todos os meus projetos desenvolvidos até Hoje estarão disponiveis no meu github, para mais informações clique no botão abaixo
+        </p>
+        <p><a class="btn btn-primary" href="@Url.Action("Projetos", "Home")">Saiba Mais &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>Minhas Habilidades</h2>
+        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
+        <p><a class="btn btn-primary" href="@Url.Action("Skills", "Home")">Saiba Mais &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>Contato</h2>
+        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
+        <p><a class="btn btn-primary" href="@Url.Action("Contato", "Home")">Saiba Mais &raquo;</a></p>
+    </div>
+</div>
