@@ -1,17 +1,46 @@
 ﻿@{
-    ViewBag.Title = "Contact";
+    ViewBag.Title = "Contato";
 }
 <h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
+<hr />
 
-<address>
-    One Microsoft Way<br />
-    Redmond, WA 98052-6399<br />
-    <abbr title="Phone">P:</abbr>
-    425.555.0100
-</address>
+<div class="row">
+    <form>
+        <div class="col-md-9">
+            <div class="form-group">
+                <label for="exampleFormControlInput1">Nome </label>
+                <input type="text" class="form-control" id="inputEmail" placeholder="John senna">
+            </div>
+        </div>
+        <div class="col-md-3"><a href="https://www.linkedin.com/in/gustavo-lafant-47023a158/"><img src="~/Content/Img/linkedin.png" width="50" class="zoom" /></a></div>
+</div>
 
-<address>
-    <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
-    <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
-</address>
+<div class="row">
+    <div class="col-md-9">
+        <div class="form-group">
+            <label for="exampleFormControlSelect1">Email</label>
+            <input type="email" class="form-control" id="inputName" placeholder="name@example.com">
+        </div>
+    </div>
+    <div class="col-md-3"><a href="mailto:gustavo_lafant@hotmail.com"><img src="~/Content/Img/outlook.png" width="50" class="zoom" /></a></div>
+</div>
+<div class="row">
+    <div class="col-md-9">
+        <div class="form-group">
+            <label for="exampleFormControlTextarea1">Mensagem</label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+        </div>
+    </div>
+    <div class="col-md-12">
+        <button type="submit" class="btn btn-primary mb-2" id="enviar" onclick="batata()">Enviar</button>
+        
+    </div>
+    </form>
+</div>
+
+
+<script>
+    function batata() {  
+        alert('Dados enviados com sucesso!');
+    }
+</script>

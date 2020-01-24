@@ -15,23 +15,17 @@ namespace Portifolio.Controllers
 
         public ActionResult Projetos()
         {
-            ViewBag.Message = "Your application description page.";
-
             return View();
         }
 
         public ActionResult Contato()
         {
-            ViewBag.Message = "Your contact page.";
-
             return View();
         }
 
         public ActionResult Skills() 
         {
-            ViewBag.Message = "Your skills description page.";
-
-                return View();
+            return View();
         }
     }
 }
