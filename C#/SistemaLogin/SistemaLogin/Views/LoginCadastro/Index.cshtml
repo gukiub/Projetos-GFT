@@ -1,0 +1,78 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br />
+<br />
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="panel panel-default">
+            <div class="panel-heading">Login</div>
+            <div class="panel-body">
+                <form method="post" action="/LoginCadastro/Login" id="frmLogin">
+                    <div class="form-group">
+                        <label for="login">Login(email)</label>
+                        <input type="email" class="form-control" id="login_email" name="login_email" placeholder="email" required />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="senha">Senha</label>
+                        <input type="password" class="form-control" id="senha" name="senha" placeholder="senha" required />
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Entrar" class="btn btn-default"/>
+
+                        @{ 
+                            if (IsPost)
+                            {
+                                if (ViewBag.ErroAutenticacao != String.Empty)
+                                {
+                                    @ViewBag.ErroAutenticacao
+                                }
+                            }
+                        }
+                    </div>
+                </form>
+            </div>
+        </div> 
+    </div>
+    <div class="col-md-6">
+        <div class="panel panel-default">
+            <div class="panel-heading">Cadastro usuário</div>
+            <div class="panel-body">
+                <form method="post" action="/LoginCadastro/CadastroUsuario" id="frmCadUsu">
+                    <div class="form-group">
+                        <label for="nome">Nome</label>
+                        <input type="text" class="form-control" id="nome" name="nome" placeholder="nome" required />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="login">Login(email)</label>
+                        <input type="email" class="form-control" id="login_email" name="login_email" placeholder="email" required />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="senha">Senha</label>
+                        <input type="password" class="form-control" id="senha" name="senha" placeholder="senha" required />
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Cadastrar Usuário" class="btn btn-default" />
+
+                        @{
+                            if (IsPost)
+                            {
+                                if (ViewBag.StatusCadastro != String.Empty)
+                                {
+                                    @ViewBag.StatusCadastro
+                                }
+                            }
+                        }
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
