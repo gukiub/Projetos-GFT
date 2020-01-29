@@ -1,0 +1,12 @@
+@model Waffles.Models.Funcionario
+
+
+<h2>Cadastro de funcionários</h2>
+
+<form class="form-horizontal" asp-controller="Funcionarios" asp-action="Salvar" method="POST">
+    <input type="hidden" asp-for="id">
+    <input type="text" class="form-control" asp-for="nome" placeholder="nome">
+    <input type="number" class="form-control" asp-for="salario" placeholder="salario">
+    <input type="text" class="form-control" asp-for="cpf" placeholder="cpf">
+    <button class="btn btn-success">Cadastrar</button>
+</form>

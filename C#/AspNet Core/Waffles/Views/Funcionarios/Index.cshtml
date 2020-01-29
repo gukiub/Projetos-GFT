@@ -1,0 +1,16 @@
+@model IEnumerable<Waffles.Models.Funcionario>
+
+    <h2> Todos os funcionarios </h2>
+    <a href="/funcionarios/Cadastrar" class="btn btn-success">Novo funcionario</a>
+    <hr>
+
+    @foreach (var funcionario in Model)
+    {
+        <p>ID: @funcionario.id</p>
+        <p>Nome: @funcionario.nome</p>
+        <p>Salario: @funcionario.salario</p>
+        <p>Cpf: @funcionario.cpf</p>
+        <a href="/funcionarios/Editar/@funcionario.id" class="btn btn-primary">Editar</a>
+        <a href="/funcionarios/Deletar/@funcionario.id" class="btn btn-danger">Deletar</a>
+        <hr>
+    }
