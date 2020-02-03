@@ -1,0 +1,14 @@
+@model Mercado.DTO.CategoriaDTO
+
+@{
+    Layout = "_LayoutAdmin";
+}
+<h3>Nova Categoria</h3>
+<hr>
+<form class="form-horizontal" asp-controller="Categorias" asp-action="Salvar" method="POST">
+    <input type="hidden" asp-net="Id" value="0">
+    <label asp-for="Nome">Nome</label>
+    <input type="text" asp-for="Nome" class="form-control" placeholder="Nome da categoria"><br>
+    <button class="btn btn-success">Cadastrar</button><br>
+    <p></p><span asp-validation-for="Nome" class="text-danger"></span>
+</form>
