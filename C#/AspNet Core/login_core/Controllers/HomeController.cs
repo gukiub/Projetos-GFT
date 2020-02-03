@@ -7,24 +7,29 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using login_core.Models;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 
 namespace login_core.Controllers
 {
     
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly UserManager<IdentityUser> _userManager;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(UserManager<IdentityUser> userManager)
         {
-            _logger = logger;
+           _userManager = userManager;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
+            //var user = await _userManager.GetUserAsync(User);
+            //return Content(User.FindFirst("Fullname").Value);
             return View();
         }
-        [Authorize]
+
+
+        [Authorize(Policy = "TemNome")]
         public IActionResult Privacy()
         {
             return View();
