@@ -20526,6 +20526,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\GOLS\\Desktop\\CasaDeShows\\Views\\Home\\Contatos.cshtml",
+      "TargetPath": "Views\\Home\\Contatos.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\GOLS\\Desktop\\CasaDeShows\\Views\\_ViewImports.cshtml",
       "TargetPath": "Views\\_ViewImports.cshtml",
       "FileKind": "mvc"
@@ -20558,11 +20563,6 @@
     {
       "FilePath": "c:\\Users\\GOLS\\Desktop\\CasaDeShows\\Views\\Shared\\Error.cshtml",
       "TargetPath": "Views\\Shared\\Error.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\GOLS\\Desktop\\CasaDeShows\\Views\\Mercado\\Contatos.cshtml",
-      "TargetPath": "Views\\Mercado\\Contatos.cshtml",
       "FileKind": "mvc"
     },
     {
