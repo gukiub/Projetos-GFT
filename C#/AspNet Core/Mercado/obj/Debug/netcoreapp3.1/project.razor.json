@@ -20581,6 +20581,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\GOLS\\Desktop\\Mercado\\Views\\Gestao\\EditarPromocao.cshtml",
+      "TargetPath": "Views\\Gestao\\EditarPromocao.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\GOLS\\Desktop\\Mercado\\Views\\Gestao\\Promocoes.cshtml",
       "TargetPath": "Views\\Gestao\\Promocoes.cshtml",
       "FileKind": "mvc"

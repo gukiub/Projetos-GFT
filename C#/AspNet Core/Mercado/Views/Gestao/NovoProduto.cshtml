@@ -3,7 +3,7 @@
 @{
     Layout = "_LayoutAdmin";
 }
-<h3>Nova Produto</h3>
+<h3>Novo Produto</h3>
 <hr>
 <form class="form-horizontal" asp-controller="Produto" asp-action="Salvar" method="POST">
     <input type="hidden" asp-for="Id" value="0">
@@ -30,8 +30,8 @@
         <option value="2">Unidade</option>
     </select><br>
     
-    <button class="btn btn-success">Cadastrar</button><br>
-    <p></p><span asp-validation-for="Nome" class="text-danger"></span>
-    <p></p><span asp-validation-for="PrecoDeCusto" class="text-danger"></span>
-    <p></p><span asp-validation-for="PrecoDeVenda" class="text-danger"></span>    
+    <button class="btn btn-success">Cadastrar</button>
+    <p></p><span asp-validation-for="Nome" class="text-danger"></span> <br>
+    <span asp-validation-for="PrecoDeCusto" class="text-danger"></span>  <br>
+    <span asp-validation-for="PrecoDeVenda" class="text-danger"></span>   
 </form>

@@ -3,6 +3,7 @@ using Mercado.Data;
 using Mercado.DTO;
 using Mercado.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace Mercado.Controllers
 {
@@ -58,6 +59,24 @@ namespace Mercado.Controllers
                 database.SaveChanges();
             }
             return RedirectToAction("Produtos", "Gestao");
+        }
+
+        
+        public IActionResult Produto(int id){
+
+            if(id > 0){
+                var produto = database.Produtos.Where(p => p.Status == true).Include(p => p.Categoria).Include(p => p.Fornecedor).First(p => p.Id == id);
+                if(produto != null){
+                    Response.StatusCode = 200; //OK
+                    return Json(produto);
+                } else {
+                    Response.StatusCode = 404; //FALHA
+                    return Json(null);
+                }
+            } else {
+                Response.StatusCode = 404; //FALHA
+                return Json(null);
+            }
         }
     }
 }

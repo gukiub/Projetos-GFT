@@ -11,7 +11,8 @@ namespace Mercado.DTO
         public string Nome {get; set;}
         [Required]
         public int ProdutoID {get; set;}
-        [Required]
+        
+        [Required(ErrorMessage="Informe a porcentagem de desconto do produto.")]
         [Range(0, 100)]
         public float Porcentagem {get; set;}
     }

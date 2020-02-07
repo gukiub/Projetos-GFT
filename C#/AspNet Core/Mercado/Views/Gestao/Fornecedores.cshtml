@@ -9,7 +9,22 @@
 
 <script>
     $(document).ready( function () {
-        $('#fornecedores').DataTable();
+        $('#fornecedores').DataTable({
+            "info" : false,
+                "language": {
+                    "lengthMenu": "Mostrando _MENU_ registros por página",
+                    "zeroRecords": "Desculpa, Nada encontrado",
+                    "info": "Mostrando página _PAGE_ de _PAGES_",
+                    "infoEmpty": "Nenhum registro disponível",
+                    "Search":        "Buscar:",
+                    "paginate": {
+                        "first":      "Primeiro",
+                        "last":       "Ultimo",
+                        "next":       "Próximo",
+                        "previous":   "Anterior"
+                        }
+                    }
+        });
     } );
 </script>
 
