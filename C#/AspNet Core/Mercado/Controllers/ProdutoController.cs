@@ -1,3 +1,4 @@
+using System.Globalization;
 using System.Linq;
 using Mercado.Data;
 using Mercado.DTO;
@@ -22,8 +23,8 @@ namespace Mercado.Controllers
                 produto.Nome = produtoTemporario.Nome;
                 produto.Categoria = database.Categorias.First(categoria => categoria.Id == produtoTemporario.CategoriaID);
                 produto.Fornecedor = database.Fornecedores.First(Fornecedor => Fornecedor.Id == produtoTemporario.FornecedorID);
-                produto.PrecoDeCusto = produtoTemporario.PrecoDeCusto;
-                produto.PrecoDeVenda = produtoTemporario.PrecoDeVenda;
+                produto.PrecoDeCusto = float.Parse(produtoTemporario.PrecoDeCustoString, CultureInfo.InvariantCulture.NumberFormat);
+                produto.PrecoDeVenda = float.Parse(produtoTemporario.PrecoDeVendaString, CultureInfo.InvariantCulture.NumberFormat);
                 produto.Medicao = produtoTemporario.Medicao;
                 produto.Status = true;
                 database.Produtos.Add(produto);

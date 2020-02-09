@@ -17,11 +17,11 @@
     <label asp-for="FornecedorID">Fornecedor</label>
     <select class="form-control" asp-for="FornecedorID" asp-items='@(new SelectList(ViewBag.Fornecedores, "Id", "Nome"))'></select>
     
-    <label asp-for="PrecoDeCusto">Preço de custo</label>
-    <input class="form-control" asp-for="PrecoDeCusto" type="number" step="any" placeholder="10.99">
+    <label asp-for="PrecoDeCustoString">Preço de custo</label>
+    <input class="form-control" asp-for="PrecoDeCustoString" type="text" step="any" placeholder="10.99">
 
-    <label asp-for="PrecoDeVenda">Preço de Venda</label>
-    <input class="form-control" asp-for="PrecoDeVenda" type="number" step="any" placeholder="20.00">
+    <label asp-for="PrecoDeVendaString">Preço de Venda</label>
+    <input class="form-control" asp-for="PrecoDeVendaString" type="text" step="any" placeholder="20.00">
 
     <label asp-for="Medicao">Unidade de medida</label>
     <select class="form-control" asp-for="Medicao">
