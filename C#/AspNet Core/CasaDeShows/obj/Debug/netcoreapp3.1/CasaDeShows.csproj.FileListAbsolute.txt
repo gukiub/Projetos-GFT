@@ -160,4 +160,9 @@ C:\Users\GOLS\Desktop\CasaDeShows\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\P
 C:\Users\GOLS\Desktop\CasaDeShows\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\_ValidationScriptsPartial.cshtml.g.cs
 C:\Users\GOLS\Desktop\CasaDeShows\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\_ViewImports.cshtml.g.cs
 C:\Users\GOLS\Desktop\CasaDeShows\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\Account\Login.cshtml.g.cs
-C:\Users\GOLS\Desktop\CasaDeShows\obj\Debug\netcoreapp3.1\Razor\Views\Home\Contatos.cshtml.g.cs
+C:\Users\GOLS\Desktop\CasaDeShows\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\Account\ResetPassword.cshtml.g.cs
+C:\Users\GOLS\Desktop\CasaDeShows\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\Account\Manage\_Layout.cshtml.g.cs
+C:\Users\GOLS\Desktop\CasaDeShows\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\Account\Manage\_ManageNav.cshtml.g.cs
+C:\Users\GOLS\Desktop\CasaDeShows\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\Account\Manage\_ViewImports.cshtml.g.cs
+C:\Users\GOLS\Desktop\CasaDeShows\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\Account\ForgotPassword.cshtml.g.cs
+C:\Users\GOLS\Desktop\CasaDeShows\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_LoginValidador.cshtml.g.cs

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using CasaDeShows.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace CasaDeShows.Controllers
 {
@@ -18,6 +19,7 @@ namespace CasaDeShows.Controllers
             _logger = logger;
         }
 
+        [Authorize(Policy = "Administrador")]
         public IActionResult Index()
         {
             return View();

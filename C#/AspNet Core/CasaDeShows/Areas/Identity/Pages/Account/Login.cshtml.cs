@@ -83,7 +83,8 @@ namespace CasaDeShows.Areas.Identity.Pages.Account
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("Usuário Logado.");
-                    return LocalRedirect(returnUrl);
+
+                    return RedirectToAction("Index", "Home");
                 }
                 if (result.RequiresTwoFactor)
                 {

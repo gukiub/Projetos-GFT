@@ -20511,6 +20511,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\GOLS\\Desktop\\CasaDeShows\\Areas\\Identity\\Pages\\Account\\Manage\\_ManageNav.cshtml",
+      "TargetPath": "Areas\\Identity\\Pages\\Account\\Manage\\_ManageNav.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\GOLS\\Desktop\\CasaDeShows\\Views\\Home\\Index.cshtml",
       "TargetPath": "Views\\Home\\Index.cshtml",
       "FileKind": "mvc"
@@ -20526,11 +20531,6 @@
       "FileKind": "mvc"
     },
     {
-      "FilePath": "c:\\Users\\GOLS\\Desktop\\CasaDeShows\\Views\\Home\\Contatos.cshtml",
-      "TargetPath": "Views\\Home\\Contatos.cshtml",
-      "FileKind": "mvc"
-    },
-    {
       "FilePath": "c:\\Users\\GOLS\\Desktop\\CasaDeShows\\Views\\_ViewImports.cshtml",
       "TargetPath": "Views\\_ViewImports.cshtml",
       "FileKind": "mvc"
@@ -20538,6 +20538,11 @@
     {
       "FilePath": "c:\\Users\\GOLS\\Desktop\\CasaDeShows\\Views\\Home\\Privacy.cshtml",
       "TargetPath": "Views\\Home\\Privacy.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\GOLS\\Desktop\\CasaDeShows\\Areas\\Identity\\Pages\\Account\\ForgotPassword.cshtml",
+      "TargetPath": "Areas\\Identity\\Pages\\Account\\ForgotPassword.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -20556,8 +20561,18 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\GOLS\\Desktop\\CasaDeShows\\Views\\Shared\\_LoginValidador.cshtml",
+      "TargetPath": "Views\\Shared\\_LoginValidador.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\GOLS\\Desktop\\CasaDeShows\\Areas\\Identity\\Pages\\Account\\_ViewImports.cshtml",
       "TargetPath": "Areas\\Identity\\Pages\\Account\\_ViewImports.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\GOLS\\Desktop\\CasaDeShows\\Areas\\Identity\\Pages\\Account\\Manage\\_ViewImports.cshtml",
+      "TargetPath": "Areas\\Identity\\Pages\\Account\\Manage\\_ViewImports.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -20566,8 +20581,18 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\GOLS\\Desktop\\CasaDeShows\\Areas\\Identity\\Pages\\Account\\Manage\\_Layout.cshtml",
+      "TargetPath": "Areas\\Identity\\Pages\\Account\\Manage\\_Layout.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\GOLS\\Desktop\\CasaDeShows\\Areas\\Identity\\Pages\\Account\\Login.cshtml",
       "TargetPath": "Areas\\Identity\\Pages\\Account\\Login.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\GOLS\\Desktop\\CasaDeShows\\Areas\\Identity\\Pages\\Account\\ResetPassword.cshtml",
+      "TargetPath": "Areas\\Identity\\Pages\\Account\\ResetPassword.cshtml",
       "FileKind": "mvc"
     },
     {

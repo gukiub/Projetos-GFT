@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.Security.Claims;
 using System.Text;
 using System.Text.Encodings.Web;
 using System.Threading.Tasks;
@@ -45,12 +46,17 @@ namespace CasaDeShows.Areas.Identity.Pages.Account
 
         public class InputModel
         {
-            [Required]
+            [Required(ErrorMessage="Digite um nome")]
+            [StringLength(100, ErrorMessage = "O {0} deve conter pelo menos {2} e no máximo {1} caracteres", MinimumLength = 6)]
+            [Display(Name = "Nome")]
+            public string Nome { get; set; }
+
+            [Required(ErrorMessage="Digite um email")]
             [EmailAddress]
             [Display(Name = "Email")]
             public string Email { get; set; }
 
-            [Required]
+            [Required(ErrorMessage="Digite uma senha")]
             [StringLength(100, ErrorMessage = "A {0} deve conter pelo menos {2} e no máximo {1} caracteres maiusculos.", MinimumLength = 6)]
             [DataType(DataType.Password)]
             [Display(Name = "Senha")]
@@ -60,6 +66,9 @@ namespace CasaDeShows.Areas.Identity.Pages.Account
             [Display(Name = "Confirmar senha")]
             [Compare("Password", ErrorMessage = "As senhas não são iguais")]
             public string ConfirmPassword { get; set; }
+
+            [Required]
+            public bool Admin { get; set; }
         }
 
         public async Task OnGetAsync(string returnUrl = null)
@@ -79,6 +88,10 @@ namespace CasaDeShows.Areas.Identity.Pages.Account
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("Usuário criou uma nova conta com senha");
+
+                    await _userManager.AddClaimAsync(user, new Claim("Admin", Input.Admin.ToString()));
+                    
+                    await _userManager.AddClaimAsync(user, new Claim("Nome", Input.Nome.ToString()));
 
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
                     code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
