@@ -47,7 +47,7 @@ namespace CasaDeShows.Areas.Identity.Pages.Account
         public class InputModel
         {
             [Required(ErrorMessage="Digite um nome")]
-            [StringLength(100, ErrorMessage = "O {0} deve conter pelo menos {2} e no máximo {1} caracteres", MinimumLength = 6)]
+            [StringLength(100, ErrorMessage = "O {0} deve conter pelo menos {2} e no máximo {1} caracteres", MinimumLength = 4)]
             [Display(Name = "Nome")]
             public string Nome { get; set; }
 
@@ -84,14 +84,16 @@ namespace CasaDeShows.Areas.Identity.Pages.Account
             if (ModelState.IsValid)
             {
                 var user = new IdentityUser { UserName = Input.Email, Email = Input.Email };
+                
                 var result = await _userManager.CreateAsync(user, Input.Password);
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("Usuário criou uma nova conta com senha");
-
+                    
                     await _userManager.AddClaimAsync(user, new Claim("Admin", Input.Admin.ToString()));
                     
                     await _userManager.AddClaimAsync(user, new Claim("Nome", Input.Nome.ToString()));
+                    
 
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
                     code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));

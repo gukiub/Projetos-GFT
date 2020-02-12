@@ -3,11 +3,14 @@
 
 @{
     ViewData["Title"] = "Logar";
+    Layout = "";
 }
 
+@*
 @if(Convert.ToBoolean(User.FindFirst("Logado")) == false){
     Layout = "";
 }
+*@
 
 <!--===============================================================================================-->	
 	<link rel="icon" type="image/png" href="/Login_v16/images/icons/favicon.ico"/>
@@ -65,6 +68,10 @@
                         <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Cadastrar uma nova conta.</a>
                     </p>
                     </div>
+                </div>
+
+                <div class="container-login100-form-btn m-t-32">
+                    <div asp-validation-summary="All" class="text-danger"></div>
                 </div>
             </form>
 
