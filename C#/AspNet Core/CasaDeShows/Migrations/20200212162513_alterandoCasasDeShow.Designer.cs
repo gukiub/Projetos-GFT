@@ -3,19 +3,41 @@ using System;
 using CasaDeShows.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace CasaDeShows.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200212162513_alterandoCasasDeShow")]
+    partial class alterandoCasasDeShow
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "3.1.1")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
+
+            modelBuilder.Entity("CasaDeShows.Models.Bandas", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<string>("Estilo")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("Nome")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<bool>("Status")
+                        .HasColumnType("tinyint(1)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Bandas");
+                });
 
             modelBuilder.Entity("CasaDeShows.Models.CasasDeShow", b =>
                 {
@@ -23,10 +45,16 @@ namespace CasaDeShows.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<string>("Bandas")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                    b.Property<int?>("BandasId")
+                        .HasColumnType("int");
 
                     b.Property<int>("Capacidade")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("EventosId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("HistoricoId")
                         .HasColumnType("int");
 
                     b.Property<int>("IngressosDisp")
@@ -43,7 +71,86 @@ namespace CasaDeShows.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("BandasId");
+
+                    b.HasIndex("EventosId");
+
+                    b.HasIndex("HistoricoId");
+
                     b.ToTable("casasDeShow");
+                });
+
+            modelBuilder.Entity("CasaDeShows.Models.Eventos", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<int?>("BandaId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("Data")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<int?>("LocalId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Nome")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<double>("Preco")
+                        .HasColumnType("double");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("BandaId");
+
+                    b.HasIndex("LocalId");
+
+                    b.ToTable("Eventos");
+                });
+
+            modelBuilder.Entity("CasaDeShows.Models.Historicos", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Historicos");
+                });
+
+            modelBuilder.Entity("CasaDeShows.Models.Ingressos", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<int?>("BandasId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("Data")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<int?>("LocalId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("PrecoId")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("Status")
+                        .HasColumnType("tinyint(1)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("BandasId");
+
+                    b.HasIndex("LocalId");
+
+                    b.HasIndex("PrecoId");
+
+                    b.ToTable("Ingressos");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -240,6 +347,47 @@ namespace CasaDeShows.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens");
+                });
+
+            modelBuilder.Entity("CasaDeShows.Models.CasasDeShow", b =>
+                {
+                    b.HasOne("CasaDeShows.Models.Bandas", "Bandas")
+                        .WithMany()
+                        .HasForeignKey("BandasId");
+
+                    b.HasOne("CasaDeShows.Models.Eventos", null)
+                        .WithMany("IngressosDisp")
+                        .HasForeignKey("EventosId");
+
+                    b.HasOne("CasaDeShows.Models.Historicos", "Historico")
+                        .WithMany()
+                        .HasForeignKey("HistoricoId");
+                });
+
+            modelBuilder.Entity("CasaDeShows.Models.Eventos", b =>
+                {
+                    b.HasOne("CasaDeShows.Models.Bandas", "Banda")
+                        .WithMany()
+                        .HasForeignKey("BandaId");
+
+                    b.HasOne("CasaDeShows.Models.CasasDeShow", "Local")
+                        .WithMany()
+                        .HasForeignKey("LocalId");
+                });
+
+            modelBuilder.Entity("CasaDeShows.Models.Ingressos", b =>
+                {
+                    b.HasOne("CasaDeShows.Models.Bandas", "Bandas")
+                        .WithMany()
+                        .HasForeignKey("BandasId");
+
+                    b.HasOne("CasaDeShows.Models.CasasDeShow", "Local")
+                        .WithMany()
+                        .HasForeignKey("LocalId");
+
+                    b.HasOne("CasaDeShows.Models.Eventos", "Preco")
+                        .WithMany()
+                        .HasForeignKey("PrecoId");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

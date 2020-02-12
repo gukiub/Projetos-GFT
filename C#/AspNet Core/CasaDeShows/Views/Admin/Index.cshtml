@@ -1,0 +1,37 @@
+@model IEnumerable<CasaDeShows.Models.CasasDeShow>
+
+<div class="container">
+
+<h2>Cadastro de Casas de Show</h2>
+
+<table id="Casas" class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Nome</th>
+            <th>Capacidade</th>
+            <th>Ingressos Disponveis</th>
+            <th>Local</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var casas in Model)
+        {
+            <tr>
+                <td>@casas.Id</td>
+                <td>@casas.Nome</td>
+                <td>@casas.Capacidade</td>
+                <td>@casas.IngressosDisp</td>
+                <td>@casas.Local</td>
+                <td><a class="btn btn-primary" href="/Gestao/EditarCategoria/@casas.Id">Editar</a> 
+                
+                <form asp-action="Deletar" asp-controller="Categorias" style="display: inline;">
+                    <input type="hidden" name="id" id="id" value="@casas.Id">
+                    <button class="btn btn-danger">Deletar</button>
+                </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
