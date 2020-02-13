@@ -1,26 +1,153 @@
+using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 using CasaDeShows.Data;
 using CasaDeShows.Models;
-using Microsoft.AspNetCore.Mvc;
 
-namespace CasaDeShows.Controllers
+namespace CasaDeShows.controllers
 {
     public class AdminController : Controller
     {
+        private readonly ApplicationDbContext _context;
 
-        private readonly ApplicationDbContext database;
-
-        public AdminController(ApplicationDbContext database){
-            this.database = database;
+        public AdminController(ApplicationDbContext context)
+        {
+            _context = context;
         }
-        
-        public IActionResult Index(){
-            var casas = database.casasDeShow.First();
+
+        // GET: Admin
+        public async Task<IActionResult> Index()
+        {
+            return View(await _context.casasDeShow.ToListAsync());
+        }
+
+        // GET: Admin/Details/5
+        public async Task<IActionResult> Details(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var casasDeShow = await _context.casasDeShow
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (casasDeShow == null)
+            {
+                return NotFound();
+            }
+
+            return View(casasDeShow);
+        }
+
+        // GET: Admin/Create
+        public IActionResult Create()
+        {
             return View();
         }
 
-        public IActionResult NovaCasa(){
-            return View();
+        // POST: Admin/Create
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create([Bind("Id,Nome,Capacidade,Bandas,IngressosDisp,Local,Status,StatusString")] CasasDeShow casasDeShow)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Add(casasDeShow);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+            }
+            return View(casasDeShow);
+        }
+
+        // GET: Admin/Edit/5
+        public async Task<IActionResult> Edit(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var casasDeShow = await _context.casasDeShow.FindAsync(id);
+            if (casasDeShow == null)
+            {
+                return NotFound();
+            }
+            return View(casasDeShow);
+        }
+
+        // POST: Admin/Edit/5
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Nome,Capacidade,Bandas,IngressosDisp,Local,Status,StatusString")] CasasDeShow casasDeShow)
+        {
+            if (id != casasDeShow.Id)
+            {
+                return NotFound();
+            }
+
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    _context.Update(casasDeShow);
+                    await _context.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!CasasDeShowExists(casasDeShow.Id))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+                return RedirectToAction(nameof(Index));
+            }
+            return View(casasDeShow);
+        }
+
+        // GET: Admin/Delete/5
+        public async Task<IActionResult> Delete(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var casasDeShow = await _context.casasDeShow
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (casasDeShow == null)
+            {
+                return NotFound();
+            }
+
+            return View(casasDeShow);
+        }
+
+        // POST: Admin/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteConfirmed(int id)
+        {
+            var casasDeShow = await _context.casasDeShow.FindAsync(id);
+            _context.casasDeShow.Remove(casasDeShow);
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+        }
+
+        private bool CasasDeShowExists(int id)
+        {
+            return _context.casasDeShow.Any(e => e.Id == id);
         }
     }
 }

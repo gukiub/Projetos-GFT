@@ -10,6 +10,5 @@ namespace CasaDeShows.Models
         public string Bandas{get;set;}
         public int IngressosDisp{get;set;}
         public string Local{get;set;}
-        public bool Status{get;set;}
     }
 }

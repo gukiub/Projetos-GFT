@@ -23,6 +23,7 @@ namespace CasaDeShows.Controllers
                 casas.Bandas = casasDeShow.Bandas;
                 casas.IngressosDisp = casasDeShow.IngressosDisp;
                 casas.Local = casasDeShow.Local;
+                casas.Bandas = "teste";
                 database.casasDeShow.Add(casasDeShow);
                 database.SaveChanges();
                 return RedirectToAction("Index", "Home");
