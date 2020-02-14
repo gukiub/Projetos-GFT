@@ -6,9 +6,6 @@ namespace CasaDeShows.Models
     {
         public int Id{get; set;}
         public string Nome{get;set;}
-        public int Capacidade{get;set;}
-        public string Bandas{get;set;}
-        public int IngressosDisp{get;set;}
         public string Local{get;set;}
     }
 }

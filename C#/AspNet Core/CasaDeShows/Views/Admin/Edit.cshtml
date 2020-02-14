@@ -1,12 +1,15 @@
 @model CasaDeShows.Models.CasasDeShow
 
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = "Editar";
+    Layout = "_LayoutAdmin";
 }
 
-<h1>Edit</h1>
+<div class="container">
+<div class="jumbotron" >
 
-<h4>CasasDeShow</h4>
+<h1 class="text-dark">Editar</h1>
+
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -19,33 +22,19 @@
                 <span asp-validation-for="Nome" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Capacidade" class="control-label"></label>
-                <input asp-for="Capacidade" class="form-control" />
-                <span asp-validation-for="Capacidade" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Bandas" class="control-label"></label>
-                <input asp-for="Bandas" class="form-control" />
-                <span asp-validation-for="Bandas" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="IngressosDisp" class="control-label"></label>
-                <input asp-for="IngressosDisp" class="form-control" />
-                <span asp-validation-for="IngressosDisp" class="text-danger"></span>
-            </div>
-            <div class="form-group">
                 <label asp-for="Local" class="control-label"></label>
                 <input asp-for="Local" class="form-control" />
                 <span asp-validation-for="Local" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <input type="submit" value="Salvar" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">Voltar para a Lista</a>
 </div>
-
+</div>
+</div>

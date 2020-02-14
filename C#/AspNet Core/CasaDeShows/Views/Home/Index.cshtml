@@ -1,5 +1,10 @@
-﻿@{
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+@{
     ViewData["Title"] = "Home Page";
+    Layout = "_LayoutAdmin";
 }
 
 <section class="banner_part container-batata" id="home">
@@ -161,52 +166,3 @@
             </div>
         </section>
     
-        <section class="pricing_part padding_top" id="parceiros">
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-lg-6">
-                        <div class="section_tittle text-center">
-                            <h2>Preço de parcerias</h2>
-                        </div>
-                    </div>
-                </div>
-                <div class="row justify-content-center">
-                    <div class="col-lg-3 col-sm-6">
-                        <div class="single_pricing_part">
-                            <p>Pacote de bronze</p>
-                            <h3>R$50.00</h3>
-                            <ul>
-                                <li>Plano basico mensal</li>
-                                <li>Acesso Ilimitado ao painel de admistração</li>
-                                <li>1 mês</li>
-                            </ul>
-                            <a href="#" class="btn_2">Escolher plano</a>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-sm-6">
-                        <div class="single_pricing_part">
-                            <p>Pacote de prata</p>
-                            <h3>R$120.00</h3>
-                            <ul>
-                                <li>Plano intermediário Trimestral</li>
-                                <li>Acesso Ilimitado ao painel admistrativo</li>
-                                <li>3 meses</li>
-                            </ul>
-                            <a href="#" class="btn_2">Escolher plano</a>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-sm-6">
-                        <div class="single_pricing_part">
-                            <p>Pacote de ouro</p>
-                            <h3>R$360.00</h3>
-                            <ul>
-                                <li>Plano anual</li>
-                                <li>Destaque no site, além de outras vantagens</li>
-                                <li>1 ano</li>
-                            </ul>
-                            <a href="#" class="btn_2">Escolher plano</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>

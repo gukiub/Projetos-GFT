@@ -1,12 +1,13 @@
 @model CasaDeShows.Models.CasasDeShow
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Criar";
+    Layout = "_LayoutAdmin";
 }
 
-<h1>Create</h1>
-
-<h4>CasasDeShow</h4>
+<div class="container">
+<div class="jumbotron" >
+<h1 class="text-dark">Criar uma casa de show</h1>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -14,27 +15,12 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="Nome" class="control-label"></label>
-                <input asp-for="Nome" class="form-control" />
+                <input asp-for="Nome" class="form-control"/>
                 <span asp-validation-for="Nome" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Capacidade" class="control-label"></label>
-                <input asp-for="Capacidade" class="form-control" />
-                <span asp-validation-for="Capacidade" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Bandas" class="control-label"></label>
-                <input asp-for="Bandas" class="form-control" />
-                <span asp-validation-for="Bandas" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="IngressosDisp" class="control-label"></label>
-                <input asp-for="IngressosDisp" class="form-control" />
-                <span asp-validation-for="IngressosDisp" class="text-danger"></span>
-            </div>
-            <div class="form-group">
                 <label asp-for="Local" class="control-label"></label>
-                <input asp-for="Local" class="form-control" />
+                <input asp-for="Local" class="form-control"  />
                 <span asp-validation-for="Local" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -45,6 +31,7 @@
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index" class="btn btn-primary">Voltar para a Lista</a>
 </div>
-
+</div>
+</div>

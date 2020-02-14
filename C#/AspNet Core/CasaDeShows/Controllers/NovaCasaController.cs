@@ -19,11 +19,7 @@ namespace CasaDeShows.Controllers
             if(ModelState.IsValid){
                 CasasDeShow casas = new CasasDeShow();
                 casas.Nome = casasDeShow.Nome;
-                casas.Capacidade = casasDeShow.Capacidade;
-                casas.Bandas = casasDeShow.Bandas;
-                casas.IngressosDisp = casasDeShow.IngressosDisp;
                 casas.Local = casasDeShow.Local;
-                casas.Bandas = "teste";
                 database.casasDeShow.Add(casasDeShow);
                 database.SaveChanges();
                 return RedirectToAction("Index", "Home");

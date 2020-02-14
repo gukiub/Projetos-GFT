@@ -343,3 +343,8 @@ C:\Users\GOLS\Desktop\CasaDeShows\obj\Debug\netcoreapp3.1\Razor\Views\Admin\Crea
 C:\Users\GOLS\Desktop\CasaDeShows\obj\Debug\netcoreapp3.1\Razor\Views\Admin\Delete.cshtml.g.cs
 C:\Users\GOLS\Desktop\CasaDeShows\obj\Debug\netcoreapp3.1\Razor\Views\Admin\Details.cshtml.g.cs
 C:\Users\GOLS\Desktop\CasaDeShows\obj\Debug\netcoreapp3.1\Razor\Views\Admin\Edit.cshtml.g.cs
+C:\Users\GOLS\Desktop\CasaDeShows\obj\Debug\netcoreapp3.1\Razor\Views\Eventos\Create.cshtml.g.cs
+C:\Users\GOLS\Desktop\CasaDeShows\obj\Debug\netcoreapp3.1\Razor\Views\Eventos\Delete.cshtml.g.cs
+C:\Users\GOLS\Desktop\CasaDeShows\obj\Debug\netcoreapp3.1\Razor\Views\Eventos\Details.cshtml.g.cs
+C:\Users\GOLS\Desktop\CasaDeShows\obj\Debug\netcoreapp3.1\Razor\Views\Eventos\Edit.cshtml.g.cs
+C:\Users\GOLS\Desktop\CasaDeShows\obj\Debug\netcoreapp3.1\Razor\Views\Eventos\Index.cshtml.g.cs
