@@ -11,19 +11,21 @@ using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
+using CasaDeShows.Areas.Identity.Users;
+using CasaDeShows.Token;
 
 namespace CasaDeShows.Areas.Identity.Pages.Account
 {
     [AllowAnonymous]
     public class LoginModel : PageModel
     {
-        private readonly UserManager<IdentityUser> _userManager;
-        private readonly SignInManager<IdentityUser> _signInManager;
+        private readonly UserManager<AdminUser> _userManager;
+        private readonly SignInManager<AdminUser> _signInManager;
         private readonly ILogger<LoginModel> _logger;
 
-        public LoginModel(SignInManager<IdentityUser> signInManager, 
+        public LoginModel(SignInManager<AdminUser> signInManager, 
             ILogger<LoginModel> logger,
-            UserManager<IdentityUser> userManager)
+            UserManager<AdminUser> userManager)
         {
             _userManager = userManager;
             _signInManager = signInManager;
@@ -83,6 +85,14 @@ namespace CasaDeShows.Areas.Identity.Pages.Account
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("Usuário Logado.");
+                    // Create POST data and convert it to a byte array.  
+                    User userToken = new User();
+                    userToken.UserID = Input.Email;
+                    userToken.Password = Input.Password;
+
+                    returnUrl = Url.Content("~/api/Login/"+ userToken.UserID+"/"+ userToken.Password);
+
+                    return LocalRedirect(returnUrl);
 
                     return RedirectToAction("Index", "Home");
                 }
