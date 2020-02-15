@@ -3,14 +3,16 @@ using System;
 using CasaDeShows.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace CasaDeShows.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200214125409_CreateCasaDeShowsSchema")]
+    partial class CreateCasaDeShowsSchema
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -32,56 +34,6 @@ namespace CasaDeShows.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("casasDeShow");
-                });
-
-            modelBuilder.Entity("CasaDeShows.Models.Eventos", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    b.Property<int?>("CasaDeShowsId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("Generoid")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Ingressos")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Nome")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<double>("Preco")
-                        .HasColumnType("double");
-
-                    b.Property<DateTime>("data")
-                        .HasColumnType("datetime(6)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CasaDeShowsId");
-
-                    b.HasIndex("Generoid");
-
-                    b.ToTable("Eventos");
-                });
-
-            modelBuilder.Entity("CasaDeShows.Models.Generos", b =>
-                {
-                    b.Property<int>("id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    b.Property<string>("imagem")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<string>("nome")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.HasKey("id");
-
-                    b.ToTable("Generos");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -278,17 +230,6 @@ namespace CasaDeShows.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens");
-                });
-
-            modelBuilder.Entity("CasaDeShows.Models.Eventos", b =>
-                {
-                    b.HasOne("CasaDeShows.Models.CasasDeShow", "CasaDeShows")
-                        .WithMany()
-                        .HasForeignKey("CasaDeShowsId");
-
-                    b.HasOne("CasaDeShows.Models.Generos", "Genero")
-                        .WithMany()
-                        .HasForeignKey("Generoid");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

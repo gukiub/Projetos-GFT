@@ -1,6 +1,11 @@
 
 @model CasaDeShows.Models.CasasDeShow
 
+@{
+    ViewData["Title"] = "Criar";
+    Layout = "_LayoutAdmin";
+}
+
 <div class="container">
 
 <h2>Cadastro de Casas de Show</h2>
@@ -8,8 +13,6 @@
 <form class="form-horizontal" asp-controller="NovaCasa" asp-action="Salvar" method="POST">
     <input type="hidden" asp-for="Id" value="0">
     <input type="text" class="form-control" asp-for="Nome" placeholder="nome">
-    <input type="number" class="form-control" asp-for="Capacidade" placeholder="Capacidade">
-    <input type="number" class="form-control" asp-for="IngressosDisp" placeholder="Ingressos Disponiveis">
     <input type="text" class="form-control" asp-for="Local" placeholder="Local">
     <button class="btn btn-success">Cadastrar</button>
 </form>

@@ -8,24 +8,25 @@ using Microsoft.EntityFrameworkCore;
 using CasaDeShows.Data;
 using CasaDeShows.Models;
 
-namespace CasaDeShows.controllers
+namespace CasaDeShows.Controllers
 {
-    public class AdminController : Controller
+    public class EventosController : Controller
     {
         private readonly ApplicationDbContext _context;
 
-        public AdminController(ApplicationDbContext context)
+        public EventosController(ApplicationDbContext context)
         {
             _context = context;
         }
 
-        // GET: Admin
+        // GET: Eventos
         public async Task<IActionResult> Index()
         {
-            return View(await _context.casasDeShow.ToListAsync());
+            ViewBag.casaDeShow = _context.casasDeShow.ToList();
+            return View(await _context.Eventos.ToListAsync());
         }
 
-        // GET: Admin/Details/5
+        // GET: Eventos/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -33,42 +34,42 @@ namespace CasaDeShows.controllers
                 return NotFound();
             }
 
-            var casasDeShow = await _context.casasDeShow
+            var eventos = await _context.Eventos
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (casasDeShow == null)
+            if (eventos == null)
             {
                 return NotFound();
             }
 
-            return View(casasDeShow);
+            return View(eventos);
         }
 
-        // GET: Admin/Create
+        // GET: Eventos/Create
         public IActionResult Create()
         {
-            ViewBag.casaDeShow = _context.casasDeShow.ToList();
+            ViewBag.batata = _context.casasDeShow.ToList();
             return View();
         }
 
-        // POST: Admin/Create
+        // POST: Eventos/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Nome,Capacidade,Bandas,IngressosDisp,Local,Status,StatusString")] CasasDeShow casasDeShow)
-        {
+        public async Task<IActionResult> Create([Bind("Id,Nome,Preco,data,Ingressos,CasaDeShows_Id")] Eventos eventos)
+        {   
+            var batata = _context.casasDeShow.ToList();
             if (ModelState.IsValid)
             {
-                _context.Add(casasDeShow);
+                eventos.CasaDeShows = _context.casasDeShow.First(p => p.Id == eventos.CasaDeShows.Id);
+                _context.Add(eventos);
                 await _context.SaveChangesAsync();
-                ViewBag.casaDeShow = _context.casasDeShow.First(p => p.Id == casasDeShow.Id);
                 return RedirectToAction(nameof(Index));
             }
-           
-            return View(casasDeShow);
+            return View(eventos);
         }
 
-        // GET: Admin/Edit/5
+        // GET: Eventos/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -76,23 +77,23 @@ namespace CasaDeShows.controllers
                 return NotFound();
             }
 
-            var casasDeShow = await _context.casasDeShow.FindAsync(id);
-            if (casasDeShow == null)
+            var eventos = await _context.Eventos.FindAsync(id);
+            if (eventos == null)
             {
                 return NotFound();
             }
             ViewBag.casaDeShow = _context.casasDeShow.ToList();
-            return View(casasDeShow);
+            return View(eventos);
         }
 
-        // POST: Admin/Edit/5
+        // POST: Eventos/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Nome,Capacidade,Bandas,IngressosDisp,Local,Status,StatusString")] CasasDeShow casasDeShow)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Nome,Preco,data,Ingressos,Casas")] Eventos eventos)
         {
-            if (id != casasDeShow.Id)
+            if (id != eventos.Id)
             {
                 return NotFound();
             }
@@ -101,12 +102,13 @@ namespace CasaDeShows.controllers
             {
                 try
                 {
-                    _context.Update(casasDeShow);
+                    ViewBag.casaDeShow = _context.casasDeShow.ToList();
+                    _context.Update(eventos);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!CasasDeShowExists(casasDeShow.Id))
+                    if (!EventosExists(eventos.Id))
                     {
                         return NotFound();
                     }
@@ -117,10 +119,10 @@ namespace CasaDeShows.controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(casasDeShow);
+            return View(eventos);
         }
 
-        // GET: Admin/Delete/5
+        // GET: Eventos/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -128,30 +130,30 @@ namespace CasaDeShows.controllers
                 return NotFound();
             }
 
-            var casasDeShow = await _context.casasDeShow
+            var eventos = await _context.Eventos
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (casasDeShow == null)
+            if (eventos == null)
             {
                 return NotFound();
             }
 
-            return View(casasDeShow);
+            return View(eventos);
         }
 
-        // POST: Admin/Delete/5
+        // POST: Eventos/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var casasDeShow = await _context.casasDeShow.FindAsync(id);
-            _context.casasDeShow.Remove(casasDeShow);
+            var eventos = await _context.Eventos.FindAsync(id);
+            _context.Eventos.Remove(eventos);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool CasasDeShowExists(int id)
+        private bool EventosExists(int id)
         {
-            return _context.casasDeShow.Any(e => e.Id == id);
+            return _context.Eventos.Any(e => e.Id == id);
         }
     }
 }

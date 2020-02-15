@@ -35,7 +35,7 @@
 /**************** common css start ****************/
 /* line 3, ../../01 cl html template/03_jun 2019/186_Gaiming_html/sass/_common.scss */
 body {
-  font-family: "Aclonica", sans-serif;
+  font-family: sans-serif;
   padding: 0;
   margin: 0;
   font-size: 14px;
@@ -204,12 +204,12 @@ a:hover {
 /* line 87, ../../01 cl html template/03_jun 2019/186_Gaiming_html/sass/_common.scss */
 h1, h2, h3, h4, h5, h6 {
   color: #fff;
-  font-family: "Aclonica", sans-serif;
+  font-family: sans-serif;
 }
 
 /* line 91, ../../01 cl html template/03_jun 2019/186_Gaiming_html/sass/_common.scss */
 p {
-  font-family: "Poppins", sans-serif;
+  font-family: sans-serif;
   line-height: 29px;
   font-size: 15px;
   margin-bottom: 0px;
@@ -2207,7 +2207,7 @@ ul {
   color: #fff;
   font-size: 15px;
   padding: 43px 23px;
-  font-family: "Poppins", sans-serif;
+  font-family: sans-serif;
   text-transform: capitalize;
   line-height: 12px;
   font-weight: 400;
@@ -5562,130 +5562,6 @@ h1, h2, h3, h4, h5, h6 {
 .disabled-radio input:checked + label {
   background: url(../img/elements/disabled-radio.png) no-repeat center center/cover;
   border: none;
-}
-
-/* line 999, ../../01 cl html template/03_jun 2019/186_Gaiming_html/sass/_elements.scss */
-.default-select {
-  height: 40px;
-}
-
-/* line 1001, ../../01 cl html template/03_jun 2019/186_Gaiming_html/sass/_elements.scss */
-.default-select .nice-select {
-  border: none;
-  border-radius: 0px;
-  height: 40px;
-  background: #f9f9ff;
-  padding-left: 20px;
-  padding-right: 40px;
-}
-
-/* line 1008, ../../01 cl html template/03_jun 2019/186_Gaiming_html/sass/_elements.scss */
-.default-select .nice-select .list {
-  margin-top: 0;
-  border: none;
-  border-radius: 0px;
-  box-shadow: none;
-  width: 100%;
-  padding: 10px 0 10px 0px;
-}
-
-/* line 1015, ../../01 cl html template/03_jun 2019/186_Gaiming_html/sass/_elements.scss */
-.default-select .nice-select .list .option {
-  font-weight: 300;
-  -webkit-transition: all 0.3s ease 0s;
-  -moz-transition: all 0.3s ease 0s;
-  -o-transition: all 0.3s ease 0s;
-  transition: all 0.3s ease 0s;
-  line-height: 28px;
-  min-height: 28px;
-  font-size: 12px;
-  padding-left: 20px;
-}
-
-/* line 1022, ../../01 cl html template/03_jun 2019/186_Gaiming_html/sass/_elements.scss */
-.default-select .nice-select .list .option.selected {
-  color: #ff0000;
-  background: transparent;
-}
-
-/* line 1026, ../../01 cl html template/03_jun 2019/186_Gaiming_html/sass/_elements.scss */
-.default-select .nice-select .list .option:hover {
-  color: #ff0000;
-  background: transparent;
-}
-
-/* line 1033, ../../01 cl html template/03_jun 2019/186_Gaiming_html/sass/_elements.scss */
-.default-select .current {
-  margin-right: 50px;
-  font-weight: 300;
-}
-
-/* line 1037, ../../01 cl html template/03_jun 2019/186_Gaiming_html/sass/_elements.scss */
-.default-select .nice-select::after {
-  right: 20px;
-}
-
-/* line 1042, ../../01 cl html template/03_jun 2019/186_Gaiming_html/sass/_elements.scss */
-.form-select {
-  height: 40px;
-  width: 100%;
-}
-
-/* line 1045, ../../01 cl html template/03_jun 2019/186_Gaiming_html/sass/_elements.scss */
-.form-select .nice-select {
-  border: none;
-  border-radius: 0px;
-  height: 40px;
-  background: #f9f9ff;
-  padding-left: 45px;
-  padding-right: 40px;
-  width: 100%;
-}
-
-/* line 1053, ../../01 cl html template/03_jun 2019/186_Gaiming_html/sass/_elements.scss */
-.form-select .nice-select .list {
-  margin-top: 0;
-  border: none;
-  border-radius: 0px;
-  box-shadow: none;
-  width: 100%;
-  padding: 10px 0 10px 0px;
-}
-
-/* line 1060, ../../01 cl html template/03_jun 2019/186_Gaiming_html/sass/_elements.scss */
-.form-select .nice-select .list .option {
-  font-weight: 300;
-  -webkit-transition: all 0.3s ease 0s;
-  -moz-transition: all 0.3s ease 0s;
-  -o-transition: all 0.3s ease 0s;
-  transition: all 0.3s ease 0s;
-  line-height: 28px;
-  min-height: 28px;
-  font-size: 12px;
-  padding-left: 45px;
-}
-
-/* line 1067, ../../01 cl html template/03_jun 2019/186_Gaiming_html/sass/_elements.scss */
-.form-select .nice-select .list .option.selected {
-  color: #ff0000;
-  background: transparent;
-}
-
-/* line 1071, ../../01 cl html template/03_jun 2019/186_Gaiming_html/sass/_elements.scss */
-.form-select .nice-select .list .option:hover {
-  color: #ff0000;
-  background: transparent;
-}
-
-/* line 1078, ../../01 cl html template/03_jun 2019/186_Gaiming_html/sass/_elements.scss */
-.form-select .current {
-  margin-right: 50px;
-  font-weight: 300;
-}
-
-/* line 1082, ../../01 cl html template/03_jun 2019/186_Gaiming_html/sass/_elements.scss */
-.form-select .nice-select::after {
-  right: 20px;
 }
 
 /* line 1086, ../../01 cl html template/03_jun 2019/186_Gaiming_html/sass/_elements.scss */

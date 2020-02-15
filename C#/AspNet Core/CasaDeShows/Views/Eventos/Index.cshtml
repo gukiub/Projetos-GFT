@@ -1,10 +1,9 @@
-@model IEnumerable<CasaDeShows.Models.CasasDeShow>
+@model IEnumerable<CasaDeShows.Models.Eventos>
 
 @{
     ViewData["Title"] = "Home";
     Layout = "_LayoutAdmin";
 }
-
 
 <script>
     $(document).ready( function () {
@@ -31,20 +30,28 @@
 
 <div class="container">
 <div class="jumbotron" >
-<h1 class="text-dark">Casas de Show</h1>
-<hr>
+<h1 class="text-dark">Eventos</h1>
 
 <p>
-    <a asp-action="Create" class="btn btn-success mb-4 mt-4">Criar Nova</a>
+    <a asp-action="Create" class="btn btn-success mt-2 mb-4">Criar Novo</a>
 </p>
-<table class="table table table-hover" id="casas">
+<table class="table">
     <thead>
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.Nome)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Local)
+                @Html.DisplayNameFor(model => model.Preco)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.data)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ingressos)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CasaDeShows.Local)
             </th>
             <th>Ações</th>
         </tr>
@@ -56,11 +63,20 @@
                 @Html.DisplayFor(modelItem => item.Nome)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Local)
+                @Html.DisplayFor(modelItem => item.Preco)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-primary mr-2">Editar</a> 
-                <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Deletar</a>
+                @Html.DisplayFor(modelItem => item.data)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ingressos)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CasaDeShows.Local)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-primary mr-2">Edit</a>
+                <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Delete</a>
             </td>
         </tr>
 }
