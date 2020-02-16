@@ -348,3 +348,16 @@ C:\Users\GOLS\Desktop\CasaDeShows\obj\Debug\netcoreapp3.1\Razor\Views\Eventos\De
 C:\Users\GOLS\Desktop\CasaDeShows\obj\Debug\netcoreapp3.1\Razor\Views\Eventos\Details.cshtml.g.cs
 C:\Users\GOLS\Desktop\CasaDeShows\obj\Debug\netcoreapp3.1\Razor\Views\Eventos\Edit.cshtml.g.cs
 C:\Users\GOLS\Desktop\CasaDeShows\obj\Debug\netcoreapp3.1\Razor\Views\Eventos\Index.cshtml.g.cs
+C:\Users\gu_ki\Desktop\github\Projetos-GFT\C#\AspNet Core\CasaDeShows\obj\Debug\netcoreapp3.1\Razor\Views\Admin\Create.cshtml.g.cs
+C:\Users\gu_ki\Desktop\github\Projetos-GFT\C#\AspNet Core\CasaDeShows\obj\Debug\netcoreapp3.1\Razor\Views\Admin\Delete.cshtml.g.cs
+C:\Users\gu_ki\Desktop\github\Projetos-GFT\C#\AspNet Core\CasaDeShows\obj\Debug\netcoreapp3.1\Razor\Views\Admin\Details.cshtml.g.cs
+C:\Users\gu_ki\Desktop\github\Projetos-GFT\C#\AspNet Core\CasaDeShows\obj\Debug\netcoreapp3.1\Razor\Views\Admin\Edit.cshtml.g.cs
+C:\Users\gu_ki\Desktop\github\Projetos-GFT\C#\AspNet Core\CasaDeShows\obj\Debug\netcoreapp3.1\Razor\Views\Admin\Index.cshtml.g.cs
+C:\Users\gu_ki\Desktop\github\Projetos-GFT\C#\AspNet Core\CasaDeShows\obj\Debug\netcoreapp3.1\Razor\Views\Admin\NovaCasa.cshtml.g.cs
+C:\Users\gu_ki\Desktop\github\Projetos-GFT\C#\AspNet Core\CasaDeShows\obj\Debug\netcoreapp3.1\Razor\Views\Eventos\Create.cshtml.g.cs
+C:\Users\gu_ki\Desktop\github\Projetos-GFT\C#\AspNet Core\CasaDeShows\obj\Debug\netcoreapp3.1\Razor\Views\Eventos\Delete.cshtml.g.cs
+C:\Users\gu_ki\Desktop\github\Projetos-GFT\C#\AspNet Core\CasaDeShows\obj\Debug\netcoreapp3.1\Razor\Views\Eventos\Details.cshtml.g.cs
+C:\Users\gu_ki\Desktop\github\Projetos-GFT\C#\AspNet Core\CasaDeShows\obj\Debug\netcoreapp3.1\Razor\Views\Eventos\Edit.cshtml.g.cs
+C:\Users\gu_ki\Desktop\github\Projetos-GFT\C#\AspNet Core\CasaDeShows\obj\Debug\netcoreapp3.1\Razor\Views\Eventos\Index.cshtml.g.cs
+C:\Users\gu_ki\Desktop\github\Projetos-GFT\C#\AspNet Core\CasaDeShows\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_LayoutAdmin.cshtml.g.cs
+C:\Users\gu_ki\Desktop\github\Projetos-GFT\C#\AspNet Core\CasaDeShows\obj\Debug\netcoreapp3.1\Razor\Views\User\Index.cshtml.g.cs

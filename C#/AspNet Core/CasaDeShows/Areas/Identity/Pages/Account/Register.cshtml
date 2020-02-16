@@ -37,19 +37,19 @@
 				</span>
         <form asp-route-returnUrl="@Model.ReturnUrl" method="post" class="login100-form validate-form p-b-33 p-t-5">
             <div class="wrap-input100 validate-input">
-                <input asp-for="Input.Nome" class="input100" placeholder="Nome" required/>
+                <input asp-for="Input.Nome" class="input100" placeholder="Nome" />
                 
             </div>
             <div class="wrap-input100 validate-input">
-                <input asp-for="Input.Email" class="input100" placeholder="Email@email" required/>
+                <input asp-for="Input.Email" class="input100" placeholder="Email@email" />
                 
             </div>
             <div class="wrap-input100 validate-input">
-                <input asp-for="Input.Password" class="input100" placeholder="Senha" required/>
+                <input asp-for="Input.Password" class="input100" placeholder="Senha" />
                 
             </div>
             <div class="wrap-input100 validate-input">
-                <input asp-for="Input.ConfirmPassword" class="input100" placeholder="Confirme sua senha" required/>
+                <input asp-for="Input.ConfirmPassword" class="input100" placeholder="Confirme sua senha" />
                 
             </div>
             <div class="container-login100-form-btn m-t-32">
@@ -59,7 +59,7 @@
                             Você possui uma casa de show?
                         </label><br>
 
-                <center><button type="submit" class="login100-form-btn">Cadastrar</button><p class="mt-4">
+                <button type="submit" class="login100-form-btn">Cadastrar</button><p class="mt-4">
 
                 
                 <a asp-page="./Login" asp-route-returnUrl="@Model.ReturnUrl">Fazer Login</a>
@@ -72,7 +72,6 @@
                 <span asp-validation-for="Input.Password" class="text-danger"></span>
                 <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
             </div>
-            </center>
         </form>
     </div>
 </div>
