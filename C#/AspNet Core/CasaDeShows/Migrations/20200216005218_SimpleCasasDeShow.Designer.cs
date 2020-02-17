@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CasaDeShows.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20200216000247_CreateCasaDeShowsSchema")]
-    partial class CreateCasaDeShowsSchema
+    [Migration("20200216005218_SimpleCasasDeShow")]
+    partial class SimpleCasasDeShow
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

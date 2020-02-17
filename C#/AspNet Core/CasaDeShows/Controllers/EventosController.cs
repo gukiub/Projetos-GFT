@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using CasaDeShows.Data;
 using CasaDeShows.Models;
+using CasaDeShows.DTO;
 
 namespace CasaDeShows.Controllers
 {
@@ -55,13 +56,11 @@ namespace CasaDeShows.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Nome,Preco,data,Ingressos,CasaDeShows_Id")] Eventos eventos)
+        [Route("Eventos/Criando")]
+        public async Task<IActionResult> Criando([FromBody] EventoDTO eventos)
         {   
-            var batata = _context.casasDeShow.ToList();
             if (ModelState.IsValid)
             {
-                eventos.CasaDeShows = _context.casasDeShow.First(p => p.Id == eventos.CasaDeShows.Id);
                 _context.Add(eventos);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -91,7 +90,7 @@ namespace CasaDeShows.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Nome,Preco,data,Ingressos,Casas")] Eventos eventos)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Nome,Preco,data,Ingressos,CasaDeShows")] Eventos eventos)
         {
             if (id != eventos.Id)
             {

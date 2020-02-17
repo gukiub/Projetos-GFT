@@ -55,7 +55,7 @@ namespace CasaDeShows.controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Nome,Capacidade,Bandas,IngressosDisp,Local,Status,StatusString")] CasasDeShow casasDeShow)
+        public async Task<IActionResult> Create([Bind("Id,Nome,Local")] CasasDeShow casasDeShow)
         {
             if (ModelState.IsValid)
             {
@@ -90,7 +90,7 @@ namespace CasaDeShows.controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Nome,Capacidade,Bandas,IngressosDisp,Local,Status,StatusString")] CasasDeShow casasDeShow)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Nome,Local")] CasasDeShow casasDeShow)
         {
             if (id != casasDeShow.Id)
             {

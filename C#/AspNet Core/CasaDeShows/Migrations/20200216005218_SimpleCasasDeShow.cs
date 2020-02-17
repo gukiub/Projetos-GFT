@@ -2,7 +2,7 @@
 
 namespace CasaDeShows.Migrations
 {
-    public partial class CreateCasaDeShowsSchema : Migration
+    public partial class SimpleCasasDeShow : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
