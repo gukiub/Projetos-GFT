@@ -31,6 +31,7 @@ namespace CasaDeShows.Controllers
         {
             if (ModelState.IsValid)
             {
+                //gambiarra
                 Eventos evento = new Eventos();
                 evento.Nome = eventoTemp.Nome;
                 evento.Preco = System.Convert.ToDouble(eventoTemp.Preco);
