@@ -9,7 +9,6 @@ namespace CasaDeShows.Models
         public Eventos Preco{get;set;}
         public DateTime Data{get;set;}
         public CasasDeShow Local{get;set;}
-        public List<Bandas> Bandas {get;set;}
         public bool Status{get;set;}
         
     }

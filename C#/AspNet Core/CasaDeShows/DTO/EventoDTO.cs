@@ -13,5 +13,6 @@ namespace CasaDeShows.DTO
         public string Preco { get; set; }
         public DateTime Data { get; set; }
         public string Ingressos { get; set; }
+        public string GeneroId { get; set; }
     }
 }

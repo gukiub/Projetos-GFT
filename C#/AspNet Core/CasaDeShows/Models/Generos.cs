@@ -1,9 +1,15 @@
-namespace CasaDeShows.Models
+﻿namespace CasaDeShows.Models
 {
-    public class Generos
+    public enum Generos
     {
-        public int id { get; set; }
-        public string nome { get; set; }
-        public string imagem { get; set; }
+        ROCK = 1,
+        KPOP = 2,
+        PAGODE = 3,
+        SAMBA = 4,
+        SERTANEJO = 5,
+        METAL = 6,
+        ELETRONICA = 7,
+        JROCK = 8
+
     }
 }

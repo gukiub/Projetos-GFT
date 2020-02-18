@@ -8,17 +8,73 @@ using Microsoft.EntityFrameworkCore;
 using CasaDeShows.Data;
 using CasaDeShows.Models;
 using CasaDeShows.DTO;
+using Microsoft.AspNetCore.Hosting;
+using System.IO;
 
 namespace CasaDeShows.Controllers
 {
     public class EventosController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly IHostingEnvironment _hostingEnvironment;
 
-        public EventosController(ApplicationDbContext context)
+        public EventosController(ApplicationDbContext context, IHostingEnvironment hostingEnvironment)
         {
             _context = context;
+            _hostingEnvironment = hostingEnvironment;
         }
+
+        [HttpPost]
+        public void EnviaForm([FromBody] EventoDTO eventoTemp)
+        {
+            if (ModelState.IsValid)
+            {
+                var casaDeShowAchada = _context.casasDeShow.Where(cs => cs.Id == Convert.ToInt32(eventoTemp.CasaDeShowsId)).FirstOrDefault();
+                Eventos evento = new Eventos()
+                {
+                    CasaDeShows = casaDeShowAchada,
+                    Nome = eventoTemp.Nome,
+                    Data = eventoTemp.Data,
+                    Preco = Convert.ToDouble(eventoTemp.Preco),
+                    Genero = Convert.ToInt32(eventoTemp.GeneroId),
+                    Ingressos = Convert.ToInt32(eventoTemp.Ingressos)
+                };
+                _context.Eventos.Add(evento);
+                _context.SaveChanges();
+            }
+        }
+
+        public IActionResult SalvaImagemEvento() {
+            return View();
+        }
+
+
+        [HttpPost]
+        public IActionResult SalvarImagem(ImagemEventoDTO imagem)
+        {
+            string email = User.Identity.Name.ToString().Replace("@", "_");
+            string uniqueFileName = null;
+
+            // If the Photo property on the incoming model object is not null, then the user
+            // has selected an image to upload.
+                string uploadsFolder = Path.Combine(_hostingEnvironment.WebRootPath, "usuarios/" + email + "/imagePerfil"); // acha a pasta root da aplicação
+
+                if (!Directory.Exists(uploadsFolder))
+                {
+                    Directory.CreateDirectory(uploadsFolder);
+                }
+
+                Random random = new Random();
+
+                uniqueFileName = Guid.NewGuid().ToString() + "_" + imagem.ImagemEvento.FileName + random.Next(1000).ToString(); // cria um nome unico para a imagem
+
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName); // cria o caminho completop
+
+                imagem.ImagemEvento.CopyTo(new FileStream(filePath, FileMode.Create)); // coloca a imagem lá
+
+            return LocalRedirect("~/Evento/Index/");//retornar para o controler e nao para o arquivo cshtml!!!
+        }
+
 
         // GET: Eventos
         public async Task<IActionResult> Index()
@@ -46,7 +102,7 @@ namespace CasaDeShows.Controllers
         }
 
         // GET: Eventos/Create
-        public IActionResult Create()
+        public IActionResult Criando()
         {
             ViewBag.batata = _context.casasDeShow.ToList();
             return View();
@@ -55,18 +111,6 @@ namespace CasaDeShows.Controllers
         // POST: Eventos/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [Route("Eventos/Criando")]
-        public async Task<IActionResult> Criando([FromBody] EventoDTO eventos)
-        {   
-            if (ModelState.IsValid)
-            {
-                _context.Add(eventos);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-            return View(eventos);
-        }
 
         // GET: Eventos/Edit/5
         public async Task<IActionResult> Edit(int? id)
