@@ -25,7 +25,7 @@
     <!-- style CSS -->
     <link rel="stylesheet" href="~/css/style.css">
 </head>
-<body>
+<body id="corpo" style="background-color: black;">
     <div class="body_bg">
         <!--::header part start::-->
         <header class="main_menu single_page_menu">
@@ -56,93 +56,11 @@
                 </div>
             </div>
         </header>
+            <div class="container-fluid" style="background-color: black;">
                 @RenderBody()
-   <!--::footer_part start::-->
-        <footer class="footer_part">
-            <div class="footer_top">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-sm-6 col-lg-3">
-                            <div class="single_footer_part">
-                                <a asp-controller="Home" asp-action="Index" class="footer_logo_iner"> <img src="/img/icon.png" alt="#" width="15%"> </a>
-                                <p>Aqui deveria conter uma mensagem inspiradora, mas se vc parou para ler esse texto veja o easter egg abaixo.
-                                    batata
-                                    potato
-                                </p>
-                            </div>
-                        </div>
-                        <div class="col-sm-6 col-lg-3">
-                            <div class="single_footer_part">
-                                <h4>Informações para contato</h4>
-                                <p>Endereço : Brazil</p>
-                                <p>Telefone : +8880 44338899</p>
-                                <p>Email : musica@casadeshows.com</p>
-                            </div>
-                        </div>
-                        <div class="col-sm-6 col-lg-3">
-                            <div class="single_footer_part">
-                                <h4>Links importantes</h4>
-                                <ul class="list-unstyled">
-                                    <li><a href=""> WHMCS-bridge</a></li>
-                                    <li><a href="">Procurar dominio</a></li>
-                                    <li><a href="">Minha conta</a></li>
-                                    <li><a href="">Carrinho de compras</a></li>
-                                    <li><a href="">Nossa loja</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col-sm-6 col-lg-3">
-                            <div class="single_footer_part">
-                                <h4>Jornal</h4>
-                                <p>Procuramos novos parceiros se procura divulgação entre em contato conosco agora mesmo.
-                                </p>
-                                <div id="mc_embed_signup">
-                                    <form target="_blank"
-                                        action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01"
-                                        method="get" class="subscribe_form relative mail_part">
-                                        <input type="email" name="email" id="newsletter-form-email"
-                                            placeholder="Endereço de email" class="placeholder hide-on-focus"
-                                            onfocus="this.placeholder = ''"
-                                            onblur="this.placeholder = ' Email Address '">
-                                        <button type="submit" name="submit" id="newsletter-submit"
-                                            class="email_icon newsletter-submit button-contactForm"><i
-                                                class="far fa-paper-plane"></i></button>
-                                        <div class="mt-10 info"></div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
-            <div class="copygight_text">
-                <div class="container">
-                    <div class="row align-items-center">
-                        <div class="col-lg-8">
-                            <div class="copyright_text">
-                                <P><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="ti-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></P>
-                            </div>
-                        </div>
-                        <div class="col-lg-4">
-                            <div class="footer_icon social_icon">
-                                <ul class="list-unstyled">
-                                    <li><a href="#" class="single_social_icon"><i class="fab fa-facebook-f"></i></a>
-                                    </li>
-                                    <li><a href="#" class="single_social_icon"><i class="fab fa-twitter"></i></a></li>
-                                    <li><a href="#" class="single_social_icon"><i class="fas fa-globe"></i></a></li>
-                                    <li><a href="#" class="single_social_icon"><i class="fab fa-behance"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </footer>
-        <!--::footer_part end::-->
-    </div>
 
+   <!--::footer_part start::-->
 
     <!-- jquery plugins here-->
     <script src="~/js/jquery-1.12.1.min.js"></script>

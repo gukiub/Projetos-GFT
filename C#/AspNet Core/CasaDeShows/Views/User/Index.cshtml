@@ -1,0 +1,37 @@
+@model IEnumerable<CasaDeShows.Models.Eventos>
+@{
+    ViewData["Title"] = "teste";
+    Layout = "_Layout";
+}
+<div class="container" style="background-color: gray;">
+    @foreach(var item in Model){
+       <div class="card text-center" style="width: 18rem; float: left; margin-left: 5em; margin-top: 3em; margin-bottom: 3em;">
+        <img class="card-img-top" src="/Login_v16/images/bg-01.jpg" alt="Card image cap">
+        <div class="card-body">
+        <h3 class="card-title text-dark mb-0">@Html.DisplayFor(modelItem => item.Nome)</h3>
+        </div>
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item">Local : @Html.DisplayFor(modelItem => item.CasaDeShows.Local)</li>
+        <li class="list-group-item">Ingressos : @Html.DisplayFor(modelItem => item.Ingressos)</li>
+        <li class="list-group-item">Data: @Html.DisplayFor(modelItem => item.Data)</li>
+        <li class="list-group-item">Preço : @Html.DisplayFor(modelItem => item.Preco) R$</li>
+        <li class="list-group-item">Gênero : @Html.DisplayFor(modelItem => item.Genero)</li>
+
+    </ul>
+    <div class="card-body">
+        <a type="button" class="btn btn-primary" id="btnComprar">Comprar</a>
+    </div>
+    </div>
+    }
+</div>
+
+<script src="~/js/jquery-3.4.1-COMPLETASSO.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+         $("#btnComprar").click(function() {
+            alert("teste");
+        });
+    });
+
+</script>

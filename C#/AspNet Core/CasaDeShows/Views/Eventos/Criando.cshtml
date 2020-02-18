@@ -7,10 +7,11 @@
 
 <div class="container">
 <div class="jumbotron">
-
+<p>
 <h1 class="text-dark">Criar Eventos</h1>
+</p>
 
-<hr />
+
 <div class="row">
     <div class="col-md-4">
         <div>
@@ -46,7 +47,7 @@
                 </select>
             </div>
             <div class="form-group">
-                <input type="button" value="Create" class="btn btn-primary" id="btnCadastrar" />
+                <input type="button" value="Criar" class="btn btn-primary" id="btnCadastrar" />
             </div>
         </div>
     </div>
@@ -89,8 +90,8 @@
                 success: function (data) {
                     // evento.Ingressos com erro
                     var temp = data;
-                    if(!evento.Nome == "" && !evento.Preco == "" && !evento.Data == ""){
-                        window.location.href = '@Url.Action("Index?id='data'", "Eventos")';
+                    if(!evento.Nome == "" && !evento.CasaDeShowsId == "" && !evento.Preco == "" && !evento.Ingressos == "" && !evento.Data == ""){
+                        window.location.href = '@Url.Action("Index", "Eventos")';
                     } else {
                         alert("preencha os campos");
                     }

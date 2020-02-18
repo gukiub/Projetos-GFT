@@ -13,6 +13,7 @@ using System.IO;
 
 namespace CasaDeShows.Controllers
 {
+    
     public class EventosController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -57,7 +58,7 @@ namespace CasaDeShows.Controllers
 
             // If the Photo property on the incoming model object is not null, then the user
             // has selected an image to upload.
-                string uploadsFolder = Path.Combine(_hostingEnvironment.WebRootPath, "usuarios/" + email + "/imagePerfil"); // acha a pasta root da aplicação
+                string uploadsFolder = Path.Combine(_hostingEnvironment.WebRootPath, "usuarios/" + email + "/imagePerfil"); // acha a pasta root da aplicaï¿½ï¿½o
 
                 if (!Directory.Exists(uploadsFolder))
                 {
@@ -70,7 +71,7 @@ namespace CasaDeShows.Controllers
 
                 string filePath = Path.Combine(uploadsFolder, uniqueFileName); // cria o caminho completop
 
-                imagem.ImagemEvento.CopyTo(new FileStream(filePath, FileMode.Create)); // coloca a imagem lá
+                imagem.ImagemEvento.CopyTo(new FileStream(filePath, FileMode.Create)); // coloca a imagem lï¿½
 
             return LocalRedirect("~/Evento/Index/");//retornar para o controler e nao para o arquivo cshtml!!!
         }
@@ -80,7 +81,12 @@ namespace CasaDeShows.Controllers
         public async Task<IActionResult> Index()
         {
             ViewBag.casaDeShow = _context.casasDeShow.ToList();
-            return View(await _context.Eventos.ToListAsync());
+
+            if(_context.casasDeShow.Count() != 0){
+                return View(await _context.Eventos.ToListAsync());
+            } else {
+                return View("ErroEvento");
+            }
         }
 
         // GET: Eventos/Details/5
@@ -134,7 +140,7 @@ namespace CasaDeShows.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Nome,Preco,data,Ingressos,CasaDeShows")] Eventos eventos)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Nome,Preco,Data,Ingressos,CasaDeShows")] Eventos eventos)
         {
             if (id != eventos.Id)
             {
