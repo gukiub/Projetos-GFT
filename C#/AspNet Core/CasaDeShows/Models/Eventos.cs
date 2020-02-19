@@ -1,15 +1,28 @@
 using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace CasaDeShows.Models
 {
     public class Eventos
-    {
+    { 
+        [Required]
         public int Id { get; set; }
+        [Required]
+        
+        [StringLength(100, ErrorMessage = "• Nome muito grande, tente um nome menor.")]
+        [MinLength(2, ErrorMessage = "• Nome muito pequeno, tente um nome maior.")]
         public string Nome { get; set; }
+        [Required]
         public CasasDeShow CasaDeShows { get; set; }
+        [Required]
         public double Preco { get; set; }
-        public Generos Genero { get; set; }
-        public DateTime data { get; set; }
+        [Required]
+        public int Genero { get; set; }
+        [Required]
+        public DateTime Data { get; set; }
+        [Required]
         public int Ingressos { get; set; }
+        [Required]
+        public string Imagem { get; set; }
     }
 }

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using CasaDeShows.Models;
 using Microsoft.AspNetCore.Identity;
 
 namespace CasaDeShows.Areas.Identity.Users
@@ -10,8 +11,7 @@ namespace CasaDeShows.Areas.Identity.Users
     public class AdminUser : IdentityUser
     {
         //virar colunas do aspnet users
-        public int Id { get; set; }
         public int Nome { get; set; }
-
+        public Chave Chave { get; set; }
     }
 }

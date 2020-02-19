@@ -33,17 +33,16 @@ namespace CasaDeShows.Areas.Identity.Pages.Account
         private readonly RoleManager<IdentityRole> _roleManager;
         private readonly ApplicationDbContext _ctx;
 
-        public RegisterModel(
-            UserManager<AdminUser> userManager,
-            SignInManager<AdminUser> signInManager,
-            ILogger<RegisterModel> logger
-            //IEmailSender emailSender
-            )
+        public RegisterModel(SignInManager<AdminUser> signInManager, UserManager<AdminUser> userManager, ILogger<RegisterModel> logger, RoleManager<IdentityRole> roleManager, ApplicationDbContext ctx, InputModel input, string returnUrl, IList<AuthenticationScheme> externalLogins)
         {
-            _userManager = userManager;
             _signInManager = signInManager;
+            _userManager = userManager;
             _logger = logger;
-            //_emailSender = emailSender;
+            _roleManager = roleManager;
+            _ctx = ctx;
+            Input = input;
+            ReturnUrl = returnUrl;
+            ExternalLogins = externalLogins;
         }
 
         [BindProperty]

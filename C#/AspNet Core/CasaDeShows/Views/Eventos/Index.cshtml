@@ -31,11 +31,12 @@
 <div class="container">
 <div class="jumbotron" >
 <h1 class="text-dark">Eventos</h1>
+<hr />
 
 <p>
-    <a asp-action="Create" class="btn btn-success mt-2 mb-4">Criar Novo</a>
+    <a asp-controller="Eventos" asp-action="Criando" class="btn btn-success mt-2 mb-4">Criar Novo</a>
 </p>
-<table class="table">
+<table class="table table table-hover">
     <thead>
         <tr>
             <th>
@@ -45,7 +46,7 @@
                 @Html.DisplayNameFor(model => model.Preco)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.data)
+                @Html.DisplayNameFor(model => model.Data)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Ingressos)
@@ -66,7 +67,7 @@
                 @Html.DisplayFor(modelItem => item.Preco)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.data)
+                @Html.DisplayFor(modelItem => item.Data)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Ingressos)

@@ -16,6 +16,8 @@ using CasaDeShows.Token;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Extensions.Options;
 using Microsoft.AspNetCore.Authorization;
+using CasaDeShows.Config;
+using CasaDeShows.Areas.Identity.Users;
 
 namespace CasaDeShows
 {
@@ -33,15 +35,14 @@ namespace CasaDeShows
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseMySql(
                     Configuration.GetConnectionString("DefaultConnection")));
-            services.AddDefaultIdentity<IdentityUser>(config => {
-                config.Password.RequireNonAlphanumeric = false;
-                config.Password.RequireUppercase = false;
-                config.Password.RequireLowercase = false;
-            })
-                .AddEntityFrameworkStores<ApplicationDbContext>();
+            
+           
             services.AddControllersWithViews();
             services.AddRazorPages();
-            
+
+            services.AddIdentity<AdminUser, IdentityRole>()
+                .AddEntityFrameworkStores<AdminUserContext>()
+                .AddDefaultTokenProviders();
 
             var signingConfigurations = new SigningConfigurations();
             services.AddSingleton(signingConfigurations);
@@ -57,7 +58,7 @@ namespace CasaDeShows
 
             services.AddAuthentication(authOptions =>
             {
-            //    authOptions.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme; //se comentar funfa identity
+                //    authOptions.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme; //se comentar funfa identity
                 authOptions.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
 
             }).AddJwtBearer(bearerOptions =>
@@ -67,15 +68,15 @@ namespace CasaDeShows
                 paramsValidation.ValidAudience = tokenConfigurations.Audience;
                 paramsValidation.ValidIssuer = tokenConfigurations.Issuer;
 
-            //    // Valida a assinatura de um token recebido
+                //    // Valida a assinatura de um token recebido
                 paramsValidation.ValidateIssuerSigningKey = true;
 
-            //    // Verifica se um token recebido ainda Ã© vÃ¡lido
+                //    // Verifica se um token recebido ainda é válido
                 paramsValidation.ValidateLifetime = true;
 
-            //    // Tempo de tolerÃ¢ncia para a expiraÃ§Ã£o de um token (utilizado
-            //    // caso haja problemas de sincronismo de horÃ¡rio entre diferentes
-            //    // computadores envolvidos no processo de comunicaÃ§Ã£o)
+                //    // Tempo de tolerância para a expiração de um token (utilizado
+                //    // caso haja problemas de sincronismo de horário entre diferentes
+                //    // computadores envolvidos no processo de comunicação)
                 paramsValidation.ClockSkew = TimeSpan.Zero;
             });
 
@@ -83,7 +84,7 @@ namespace CasaDeShows
             //// a recursos deste projeto
             services.AddAuthorization(auth =>
             {
-                auth.AddPolicy("Bearer", new AuthorizationPolicyBuilder()
+                auth.AddPolicy("Administrador", new AuthorizationPolicyBuilder()
                     .AddAuthenticationSchemes(JwtBearerDefaults.AuthenticationScheme)
                     .RequireAuthenticatedUser().Build());
             });
@@ -91,10 +92,14 @@ namespace CasaDeShows
             //services.AddAuthorization(options => options.AddPolicy("Administrador", policy => policy.RequireClaim("Admin", "True")));
 
 
+            // "injeção de dependencia" ele passa o data service para toda a aplicação
+            services.AddTransient<IDataService, DataService>();
+            
+            services.AddAuthorization(options => options.AddPolicy("Administrador", policy => policy.RequireClaim("Admin", "True")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IServiceProvider serviceProvider)
         {
             if (env.IsDevelopment())
             {
@@ -122,6 +127,7 @@ namespace CasaDeShows
                     pattern: "{controller=Home}/{action=Index}/{id?}");
                 endpoints.MapRazorPages();
             });
+            serviceProvider.GetService<IDataService>().InicializaDB();
         }
     }
 }

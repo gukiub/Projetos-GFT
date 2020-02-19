@@ -19,13 +19,12 @@ namespace CasaDeShows.Controllers
             _logger = logger;
         }
 
-        [Authorize("Bearer")]
         public IActionResult Index()
         {
             return View();
         }
 
-        public async Task<IActionResult> Privacy()
+        public IActionResult Privacy()
         {
             return View();
         }

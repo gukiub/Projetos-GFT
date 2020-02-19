@@ -15,6 +15,7 @@ using CasaDeShows.Models;
 using CasaDeShows.Token;
 using CasaDeShows.Data;
 using CasaDeShows.Areas.Identity.Users;
+using CasaDeShows.DTO;
 
 namespace CasaDeShows.Controllers
 {
@@ -23,11 +24,13 @@ namespace CasaDeShows.Controllers
     public class LoginController : Controller
     {
         private readonly ApplicationDbContext _ctx;
+        private readonly AdminUserContext _adminUserContext;
         private readonly UserManager<AdminUser> _userManager;
 
-        public LoginController(ApplicationDbContext ctx, UserManager<AdminUser> userManager)
+        public LoginController(ApplicationDbContext ctx, AdminUserContext adminUserContext, UserManager<AdminUser> userManager)
         {
             _ctx = ctx;
+            _adminUserContext = adminUserContext;
             _userManager = userManager;
         }
 
@@ -98,11 +101,10 @@ namespace CasaDeShows.Controllers
                     Authenticated = true,
                     Created = dataCriacao,
                     Expiration = dataExpiracao,
-                    Token = token,
-                    Message = "OK",
+                    Token = token
                 };
 
-                var usuario = _ctx.Usuarios.Where(u => u.Email.Equals(email))
+                var usuario = _adminUserContext.Users.Where(u => u.Email.Equals(email))
                     .Include(a => a.Chave)
                     .FirstOrDefault();
 
@@ -167,7 +169,7 @@ namespace CasaDeShows.Controllers
 
             if (credenciaisValidas)
             {
-                //Chave chave = _ctx.Usuarios.Where(u => u.Email.Equals(email)).FirstOrDefault().Chave;
+                Chave chave = _adminUserContext.Users.Where(u => u.Email.Equals(email)).FirstOrDefault().Chave;
 
                 if (chave == null || chave.Token == "")
                 {
@@ -201,11 +203,10 @@ namespace CasaDeShows.Controllers
                         Authenticated = true,
                         Created = dataCriacao,
                         Expiration = dataExpiracao,
-                        Token = token,
-                        Message = "OK",
+                        Token = token
                     };
 
-                    var usuario = _ctx.Usuarios.Where(u => u.Email.Equals(email))
+                    var usuario = _adminUserContext.Users.Where(u => u.Email.Equals(email))
                         .Include(a => a.Chave)
                         .FirstOrDefault();
 

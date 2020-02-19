@@ -15,6 +15,9 @@ namespace CasaDeShows.Areas.Identity
         public void Configure(IWebHostBuilder builder)
         {
             builder.ConfigureServices((context, services) => {
+                services.AddDbContext<AdminUserContext>(options =>
+                        options.UseMySql(
+                            context.Configuration.GetConnectionString("DefaultConnection")));
             });
         }
     }
