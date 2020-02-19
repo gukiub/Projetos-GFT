@@ -6,7 +6,7 @@
 <div class="container" style="background-color: gray;">
     @foreach(var item in Model){
        <div class="card text-center" style="width: 18rem; float: left; margin-left: 5em; margin-top: 3em; margin-bottom: 3em;">
-        <img class="card-img-top" src="/Login_v16/images/bg-01.jpg" alt="Card image cap">
+        <img class="card-img-top" src="@Html.DisplayFor(modelItem => item.Imagem)" alt="Card image cap">
         <div class="card-body">
         <h3 class="card-title text-dark mb-0">@Html.DisplayFor(modelItem => item.Nome)</h3>
         </div>

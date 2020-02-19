@@ -24,12 +24,19 @@ namespace CasaDeShows.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Local")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .IsRequired()
+                        .HasColumnType("varchar(100) CHARACTER SET utf8mb4")
+                        .HasMaxLength(100);
 
                     b.Property<string>("Nome")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .IsRequired()
+                        .HasColumnType("varchar(100) CHARACTER SET utf8mb4")
+                        .HasMaxLength(100);
 
                     b.HasKey("Id");
+
+                    b.HasIndex("Nome")
+                        .IsUnique();
 
                     b.ToTable("casasDeShow");
                 });
@@ -40,7 +47,7 @@ namespace CasaDeShows.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<int?>("CasaDeShowsId")
+                    b.Property<int>("CasaDeShowsId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("Data")
@@ -50,13 +57,16 @@ namespace CasaDeShows.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Imagem")
+                        .IsRequired()
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<int>("Ingressos")
                         .HasColumnType("int");
 
                     b.Property<string>("Nome")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .IsRequired()
+                        .HasColumnType("varchar(100) CHARACTER SET utf8mb4")
+                        .HasMaxLength(100);
 
                     b.Property<double>("Preco")
                         .HasColumnType("double");
@@ -64,6 +74,9 @@ namespace CasaDeShows.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("CasaDeShowsId");
+
+                    b.HasIndex("Nome")
+                        .IsUnique();
 
                     b.ToTable("Eventos");
                 });
@@ -268,7 +281,9 @@ namespace CasaDeShows.Migrations
                 {
                     b.HasOne("CasaDeShows.Models.CasasDeShow", "CasaDeShows")
                         .WithMany()
-                        .HasForeignKey("CasaDeShowsId");
+                        .HasForeignKey("CasaDeShowsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

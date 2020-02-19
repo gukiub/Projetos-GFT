@@ -1,6 +1,7 @@
 ﻿@model CasaDeShows.DTO.ImagemEventoDTO
 
 @{
+    var id = ViewData["eventoId"] as string;
     ViewData["Title"] = "SalvaImagemEvento";
 }
 
@@ -10,17 +11,22 @@
 <hr />
 
 
+
 <div class="row">
     <div class="col-md-4">
         <div class="form-group col-12 ml-4">
             <img id="foto" src="~/images/default-images/perfil-padrao.png" class="border rounded-circle border-dark" width="300" height="300" />
         </div>
         <form asp-action="SalvarImagem" enctype="multipart/form-data" method="post">
+
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="ImagemEvento" class="control-label">Foto De Perfil</label>
                 <input asp-for="ImagemEvento" class="form-control p-1" type="file" onchange="readURL(this);" required />
                 <span asp-validation-for="ImagemEvento" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input asp-for="EventoId" class="form-control p-1" value="@(id)" type="hidden" required />
             </div>
 
             <div class="form-group">

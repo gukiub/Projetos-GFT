@@ -12,6 +12,7 @@ using CasaDeShows.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using CasaDeShows.Config;
 
 namespace CasaDeShows
 {
@@ -37,12 +38,15 @@ namespace CasaDeShows
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddControllersWithViews();
             services.AddRazorPages();
+
+            // "injeção de dependencia" ele passa o data service para toda a aplicação
+            services.AddTransient<IDataService, DataService>();
             
             services.AddAuthorization(options => options.AddPolicy("Administrador", policy => policy.RequireClaim("Admin", "True")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IServiceProvider serviceProvider)
         {
             if (env.IsDevelopment())
             {
@@ -70,6 +74,7 @@ namespace CasaDeShows
                     pattern: "{controller=Home}/{action=Index}/{id?}");
                 endpoints.MapRazorPages();
             });
+            serviceProvider.GetService<IDataService>().InicializaDB();
         }
     }
 }

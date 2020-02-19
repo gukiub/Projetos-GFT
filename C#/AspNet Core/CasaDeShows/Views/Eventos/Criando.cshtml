@@ -90,10 +90,16 @@
                 success: function (data) {
                     // evento.Ingressos com erro
                     var temp = data;
-                    if(!evento.Nome == "" && !evento.CasaDeShowsId == "" && !evento.Preco == "" && !evento.Ingressos == "" && !evento.Data == ""){
-                        window.location.href = '@Url.Action("Index", "Eventos")';
-                    } else {
-                        alert("preencha os campos");
+
+                    if (data.includes('erro')) {
+                        window.location.href = '@Url.Action("ErroEvento", "Eventos")';
+                    }
+                    else {
+                        if (!evento.Nome == "" && !evento.CasaDeShowsId == "" && !evento.Preco == "" && !evento.Ingressos == "" && !evento.Data == "") {
+                            window.location.href = '@Url.Action("SalvaImagemEvento", "Eventos")' + "?Id=" + data;
+                        } else {
+                            alert("preencha os campos");
+                        }
                     }
                 },
                 error: function (e) {

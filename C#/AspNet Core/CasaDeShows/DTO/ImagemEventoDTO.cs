@@ -12,11 +12,13 @@ namespace CasaDeShows.DTO
         {
         }
 
-        public IFormFile ImagemEvento { get; set; }
-
-        public ImagemEventoDTO(IFormFile imagemEvento)
+        public ImagemEventoDTO(int eventoId, IFormFile imagemEvento)
         {
+            EventoId = eventoId;
             ImagemEvento = imagemEvento;
         }
+
+        public int EventoId { get; set; }
+        public IFormFile ImagemEvento { get; set; }
     }
 }

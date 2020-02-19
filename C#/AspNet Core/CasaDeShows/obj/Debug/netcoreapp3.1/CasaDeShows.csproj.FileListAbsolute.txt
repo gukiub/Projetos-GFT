@@ -543,3 +543,4 @@ C:\Users\gu_ki\Desktop\github\Projetos-GFT\C#\AspNet Core\CasaDeShows\obj\Debug\
 C:\Users\GOLS\Desktop\Projetos-GFT\C#\AspNet Core\CasaDeShows\obj\Debug\netcoreapp3.1\Razor\Views\Eventos\Criando.cshtml.g.cs
 C:\Users\GOLS\Desktop\Projetos-GFT\C#\AspNet Core\CasaDeShows\obj\Debug\netcoreapp3.1\Razor\Views\Eventos\SalvaImagemEvento.cshtml.g.cs
 C:\Users\GOLS\Desktop\Projetos-GFT\C#\AspNet Core\CasaDeShows\obj\Debug\netcoreapp3.1\Razor\Views\Eventos\ErroEvento.cshtml.g.cs
+C:\Users\gu_ki\Desktop\github\Projetos-GFT\C#\AspNet Core\CasaDeShows\obj\Debug\netcoreapp3.1\Razor\Views\Eventos\ErroEvento.cshtml.g.cs

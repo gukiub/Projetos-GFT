@@ -26,7 +26,7 @@ namespace CasaDeShows.Controllers
         }
 
         [HttpPost]
-        public void EnviaForm([FromBody] EventoDTO eventoTemp)
+        public string EnviaForm([FromBody] EventoDTO eventoTemp)
         {
             if (ModelState.IsValid)
             {
@@ -38,14 +38,27 @@ namespace CasaDeShows.Controllers
                     Data = eventoTemp.Data,
                     Preco = Convert.ToDouble(eventoTemp.Preco),
                     Genero = Convert.ToInt32(eventoTemp.GeneroId),
-                    Ingressos = Convert.ToInt32(eventoTemp.Ingressos)
+                    Ingressos = Convert.ToInt32(eventoTemp.Ingressos),
+                    Imagem = "/Login_v16/images/bg-01.jpg"
                 };
-                _context.Eventos.Add(evento);
-                _context.SaveChanges();
+                var existe = _context.casasDeShow.Where(ex => ex.Nome.Equals(eventoTemp.Nome)).Any();
+                if (existe == true)
+                {
+                    return "erro";
+                }
+                else
+                {
+                    _context.Eventos.Add(evento);
+                    _context.SaveChanges();
+                    string Id = _context.Eventos.Where(eve => eve.Nome.Equals(eventoTemp.Nome)).FirstOrDefault().Id.ToString();
+                    return Id;
+                }
             }
+            return "erro";
         }
 
-        public IActionResult SalvaImagemEvento() {
+        public IActionResult SalvaImagemEvento(string Id) {
+            ViewData["eventoId"] = Id;
             return View();
         }
 
@@ -58,22 +71,26 @@ namespace CasaDeShows.Controllers
 
             // If the Photo property on the incoming model object is not null, then the user
             // has selected an image to upload.
-                string uploadsFolder = Path.Combine(_hostingEnvironment.WebRootPath, "usuarios/" + email + "/imagePerfil"); // acha a pasta root da aplica��o
+            string uploadsFolder = Path.Combine(_hostingEnvironment.WebRootPath, "usuarios/" + email + "/imagePerfil"); // acha a pasta root 
 
-                if (!Directory.Exists(uploadsFolder))
-                {
-                    Directory.CreateDirectory(uploadsFolder);
-                }
+            if (!Directory.Exists(uploadsFolder))
+            {
+                Directory.CreateDirectory(uploadsFolder);
+            }
 
-                Random random = new Random();
+            uniqueFileName = Guid.NewGuid().ToString() + "_" + imagem.ImagemEvento.FileName; // cria um nome unico para a imagem
 
-                uniqueFileName = Guid.NewGuid().ToString() + "_" + imagem.ImagemEvento.FileName + random.Next(1000).ToString(); // cria um nome unico para a imagem
+            string filePath = Path.Combine(uploadsFolder, uniqueFileName); // cria o caminho completop
 
-                string filePath = Path.Combine(uploadsFolder, uniqueFileName); // cria o caminho completop
+            imagem.ImagemEvento.CopyTo(new FileStream(filePath, FileMode.Create)); // coloca a imagem 
+            var pesquisa = _context.Eventos.Where(eve => eve.Id == imagem.EventoId).FirstOrDefault();
+            string caminhoDaView = string.Format("/usuarios/{0}/imagePerfil/{1}", email, uniqueFileName);
+            pesquisa.Imagem = caminhoDaView;
+            _context.Attach(pesquisa).State = EntityState.Modified;
+            _context.SaveChanges();
 
-                imagem.ImagemEvento.CopyTo(new FileStream(filePath, FileMode.Create)); // coloca a imagem l�
 
-            return LocalRedirect("~/Evento/Index/");//retornar para o controler e nao para o arquivo cshtml!!!
+            return RedirectToAction("Index", "Eventos");//retornar para o controler e nao para o arquivo cshtm
         }
 
 
@@ -203,6 +220,11 @@ namespace CasaDeShows.Controllers
         private bool EventosExists(int id)
         {
             return _context.Eventos.Any(e => e.Id == id);
+        }
+
+        [HttpGet]
+        public IActionResult ErroEvento() {
+            return View();        
         }
     }
 }

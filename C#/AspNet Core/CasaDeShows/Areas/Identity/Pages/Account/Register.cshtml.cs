@@ -57,7 +57,7 @@ namespace CasaDeShows.Areas.Identity.Pages.Account
             public string Email { get; set; }
 
             [Required(ErrorMessage="Digite uma senha")]
-            [StringLength(100, ErrorMessage = "A {0} deve conter pelo menos {2} e no máximo {1} caracteres maiusculos.", MinimumLength = 6)]
+            [StringLength(100, ErrorMessage = "A {0} deve conter pelo menos 6 caracteres.", MinimumLength = 6)]
             [DataType(DataType.Password)]
             [Display(Name = "Senha")]
             public string Password { get; set; }

@@ -7,9 +7,13 @@
 
   <ItemGroup>
     <Compile Remove="Views\NovaPasta\**" />
+    <Compile Remove="wwwroot\usuarios\**" />
     <Content Remove="Views\NovaPasta\**" />
+    <Content Remove="wwwroot\usuarios\**" />
     <EmbeddedResource Remove="Views\NovaPasta\**" />
+    <EmbeddedResource Remove="wwwroot\usuarios\**" />
     <None Remove="Views\NovaPasta\**" />
+    <None Remove="wwwroot\usuarios\**" />
   </ItemGroup>
 
   <ItemGroup>
