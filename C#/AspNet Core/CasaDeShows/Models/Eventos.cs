@@ -9,8 +9,8 @@ namespace CasaDeShows.Models
         public int Id { get; set; }
         [Required]
         
-        [StringLength(100, ErrorMessage = "• Nome muito grande, tente um nome menor.")]
-        [MinLength(2, ErrorMessage = "• Nome muito pequeno, tente um nome maior.")]
+        [StringLength(100, ErrorMessage = "ï¿½ Nome muito grande, tente um nome menor.")]
+        [MinLength(2, ErrorMessage = "ï¿½ Nome muito pequeno, tente um nome maior.")]
         public string Nome { get; set; }
         [Required]
         public CasasDeShow CasaDeShows { get; set; }
@@ -22,7 +22,6 @@ namespace CasaDeShows.Models
         public DateTime Data { get; set; }
         [Required]
         public int Ingressos { get; set; }
-        [Required]
         public string Imagem { get; set; }
     }
 }

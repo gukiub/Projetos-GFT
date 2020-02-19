@@ -1,12 +1,10 @@
 @model CasaDeShows.Models.Eventos
 
-@{
-    ViewData["Title"] = "Editar";
-}
+<div class="container">
+<div class="jumbotron">
+<h1 class="text-dark">Editar</h1>
 
-<h1>Edit</h1>
-
-<h4>Eventos</h4>
+<h4 class="text-dark">Eventos</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -34,6 +32,16 @@
                 <span asp-validation-for="Ingressos" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label asp-for="CasaDeShows" class="control-label">Casa de Show</label>
+                <select asp-for="CasaDeShows.Id" class="form-control" asp-items='@(new SelectList(@ViewBag.batata, "Id", "Nome"))'>
+                </select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Genero" class="control-label">Genero</label>
+                <select asp-for="Genero" class="form-control" asp-items="Html.GetEnumSelectList<Generos>()">
+                </select>
+            </div>
+            <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
             </div>
         </form>
@@ -41,6 +49,65 @@
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">Voltar para a lista</a>
 </div>
 
+</div>
+</div>
+
+<script src="~/js/jquery-3.4.1-COMPLETASSO.js"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+        function Evento(){
+            var Nome;
+            var CasaDeShowsId; 
+            var Preco; 
+            var Data;
+            var Ingressos;
+            var GeneroId;
+        }
+   
+        $("#btnCadastrar").click(function() {
+            var evento = new Evento();
+            evento.Nome = $("#nome").val();
+            evento.CasaDeShowsId = $("#casaDeShowsId").val();
+            evento.Preco = $("#preco").val();
+            evento.Data = $("#data").val();
+            evento.Ingressos = $("#ingressos").val();
+            evento.GeneroId = $("#generoId").val();
+            console.log(evento);
+
+            $.ajax({
+                url: '@Url.Action("EnviaForm", "Eventos")',
+                contentType: "application/json; charset=utf-8",
+                type: 'POST',
+                data: JSON.stringify(evento),
+                success: function (data) {
+                    // evento.Ingressos com erro
+                    var temp = data;
+
+                    if (data.includes('erro')) {
+                        event.preventDefault();
+                        if (evento.Nome == "" || evento.CasaDeShowsId == "" || evento.Preco == "" || evento.Ingressos == "" || evento.Data == "") {
+                            alert("preencha os campos");
+                        } else {
+                            window.location.href = '@Url.Action("Error", "Eventos")';
+                        }
+                    }
+                    else {
+                        if (!evento.Nome == "" && !evento.CasaDeShowsId == "" && !evento.Preco == "" && !evento.Ingressos == "" && !evento.Data == "") {
+                            window.location.href = '@Url.Action("SalvaImagemEvento", "Eventos")' + "?Id=" + data;
+                        } else {
+                            alert("preencha os campos");
+                        }
+                    }
+                },
+                error: function (e) {
+                    //called when there is an error
+                    //console.log(e.message);
+                }
+            });
+        });
+
+    });
+</script>

@@ -120,6 +120,8 @@ namespace CasaDeShows.controllers
             return View(casasDeShow);
         }
 
+       
+
         // GET: Admin/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {

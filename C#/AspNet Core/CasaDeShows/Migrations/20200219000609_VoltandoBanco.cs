@@ -179,7 +179,7 @@ namespace CasaDeShows.Migrations
                     Genero = table.Column<int>(nullable: false),
                     Data = table.Column<DateTime>(nullable: false),
                     Ingressos = table.Column<int>(nullable: false),
-                    Imagem = table.Column<string>(nullable: false)
+                    Imagem = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {

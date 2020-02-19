@@ -42,7 +42,7 @@
                 </select>
             </div>
             <div class="form-group">
-                <label asp-for="GeneroId" class="control-label">Casa de Show</label>
+                <label asp-for="GeneroId" class="control-label">Genero</label>
                 <select asp-for="GeneroId" class="form-control" id="generoId" asp-items="Html.GetEnumSelectList<Generos>()" required>
                 </select>
             </div>
@@ -92,7 +92,12 @@
                     var temp = data;
 
                     if (data.includes('erro')) {
-                        window.location.href = '@Url.Action("ErroEvento", "Eventos")';
+                        event.preventDefault();
+                        if (evento.Nome == "" || evento.CasaDeShowsId == "" || evento.Preco == "" || evento.Ingressos == "" || evento.Data == "") {
+                            alert("preencha os campos");
+                        } else {
+                            window.location.href = '@Url.Action("Error", "Eventos")';
+                        }
                     }
                     else {
                         if (!evento.Nome == "" && !evento.CasaDeShowsId == "" && !evento.Preco == "" && !evento.Ingressos == "" && !evento.Data == "") {

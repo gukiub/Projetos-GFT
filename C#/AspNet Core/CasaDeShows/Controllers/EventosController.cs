@@ -148,7 +148,7 @@ namespace CasaDeShows.Controllers
             {
                 return NotFound();
             }
-            ViewBag.casaDeShow = _context.casasDeShow.ToList();
+            ViewBag.batata = _context.casasDeShow.ToList();
             return View(eventos);
         }
 
@@ -157,34 +157,23 @@ namespace CasaDeShows.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Nome,Preco,Data,Ingressos,CasaDeShows")] Eventos eventos)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Nome,CasaDeShows,preco,Genero,Data,Ingressos")] EventoDTO eventos)
         {
-            if (id != eventos.Id)
-            {
-                return NotFound();
-            }
-
             if (ModelState.IsValid)
             {
                 try
                 {
-                    ViewBag.casaDeShow = _context.casasDeShow.ToList();
+                    ViewBag.batata = _context.casasDeShow.ToList();
                     _context.Update(eventos);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!EventosExists(eventos.Id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
+                   throw;
                 }
                 return RedirectToAction(nameof(Index));
             }
+            ViewBag.batata = _context.casasDeShow.ToList();
             return View(eventos);
         }
 
