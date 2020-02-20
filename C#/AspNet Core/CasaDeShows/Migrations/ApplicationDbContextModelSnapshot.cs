@@ -35,9 +35,6 @@ namespace CasaDeShows.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("Nome")
-                        .IsUnique();
-
                     b.ToTable("casasDeShow");
                 });
 
@@ -57,7 +54,6 @@ namespace CasaDeShows.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Imagem")
-                        .IsRequired()
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<int>("Ingressos")
@@ -74,9 +70,6 @@ namespace CasaDeShows.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("CasaDeShowsId");
-
-                    b.HasIndex("Nome")
-                        .IsUnique();
 
                     b.ToTable("Eventos");
                 });

@@ -28,7 +28,7 @@
                     </div>
                     <div class="form-group">
                         <label asp-for="Data" class="control-label"></label>
-                        <input asp-for="Data" class="form-control" id="data" required />
+                        <input asp-for="Data" type="date" class="form-control" id="data" required />
                         <span asp-validation-for="Data" class="text-danger"></span>
                     </div>
                     <div class="form-group">
@@ -96,7 +96,7 @@
                         if (evento.Nome == "" || evento.CasaDeShowsId == "" || evento.Preco == "" || evento.Ingressos == "" || evento.Data == "") {
                             alert("preencha os campos");
                         } else {
-                            window.location.href = '@Url.Action("Error", "Eventos")';
+                            alert("Nome em uso por favor escolha outro");
                         }
                     }
                     else {

@@ -22,8 +22,6 @@ namespace CasaDeShows.Data
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
-            builder.Entity<Eventos>().HasIndex(eve => eve.Nome).IsUnique();
-            builder.Entity<CasasDeShow>().HasIndex(eve => eve.Nome).IsUnique();
         }
     }
 }
