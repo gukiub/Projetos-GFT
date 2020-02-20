@@ -5,66 +5,43 @@
     Layout = "_LayoutAdmin";
 }
 
-
-<script>
-    $(document).ready( function () {
-        $('#casas').DataTable({
-            "info" : false,
-                "language": {
-                    "lengthMenu": "Mostrando _MENU_ registros por página",
-                    "zeroRecords": "Desculpa, Nada encontrado",
-                    "info": "Mostrando página _PAGE_ de _PAGES_",
-                    "infoEmpty": "Nenhum registro disponível",
-                    "Search":        "Buscar:",
-                    "paginate": {
-                        "first":      "Primeiro",
-                        "last":       "Ultimo",
-                        "next":       "Próximo",
-                        "previous":   "Anterior"
-                        }
-                    }
-        });
-    } );
-</script>
-
-
-
 <div class="container">
-<div class="jumbotron" >
-<h1 class="text-dark">Casas de Show</h1>
-<hr />
+    <div class="jumbotron">
+        <h1 class="text-dark">Casas de Show</h1>
+        <hr />
 
-<p>
-    <a asp-action="Create" class="btn btn-success mt-2 mb-4">Criar Nova</a>
-</p>
-<table class="table table table-hover" id="casas">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Nome)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Local)
-            </th>
-            <th>Ações</th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Nome)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Local)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-primary mr-2">Editar</a> 
-                <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Deletar</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
-</div>
+        <p>
+            <a asp-action="Create" class="btn btn-success mt-2 mb-4">Criar Nova</a>
+        </p>
+        <table class="table table table-hover" id="casas">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Nome)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Local)
+                    </th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Nome)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Local)
+                        </td>
+                        <td>
+                            <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-primary mr-2">Editar</a>
+                            <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Deletar</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
 </div>

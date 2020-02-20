@@ -15,7 +15,7 @@ namespace CasaDeShows.Controllers
 {
     public class UserController : Controller
     {
-        private readonly ApplicationDbContext _context;
+        readonly ApplicationDbContext _context;
 
         public UserController(ApplicationDbContext context)
         {

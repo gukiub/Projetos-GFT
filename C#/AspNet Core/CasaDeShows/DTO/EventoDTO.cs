@@ -9,6 +9,8 @@ namespace CasaDeShows.DTO
 {
     public class EventoDTO
     {
+
+        public int Id{ get; set; }
         [Required(ErrorMessage = "• preencha o nome")]
         [StringLength(100, ErrorMessage = "• Nome muito grande, tente um nome menor.")]
         [MinLength(2, ErrorMessage = "• Nome muito pequeno, tente um nome maior.")]
@@ -19,6 +21,7 @@ namespace CasaDeShows.DTO
         public string Preco { get; set; }
         [Required(ErrorMessage = "preencha a data")]
         [DataType(DataType.DateTime)]
+       
         public DateTime Data { get; set; }
         [Required(ErrorMessage = "preencha a quantidade de ingressos")]
         public string Ingressos { get; set; }

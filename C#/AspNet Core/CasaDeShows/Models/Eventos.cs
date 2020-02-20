@@ -19,6 +19,7 @@ namespace CasaDeShows.Models
         [Required]
         public int Genero { get; set; }
         [Required]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
         public DateTime Data { get; set; }
         [Required]
         public int Ingressos { get; set; }

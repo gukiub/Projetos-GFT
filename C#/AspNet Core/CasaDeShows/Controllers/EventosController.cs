@@ -10,10 +10,11 @@ using CasaDeShows.Models;
 using CasaDeShows.DTO;
 using Microsoft.AspNetCore.Hosting;
 using System.IO;
+using Microsoft.AspNetCore.Authorization;
 
 namespace CasaDeShows.Controllers
 {
-    
+    [Authorize(Policy = "Administrador")]
     public class EventosController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -24,6 +25,7 @@ namespace CasaDeShows.Controllers
             _context = context;
             _hostingEnvironment = hostingEnvironment;
         }
+
 
         [HttpPost]
         public string EnviaForm([FromBody] EventoDTO eventoTemp)
@@ -57,7 +59,8 @@ namespace CasaDeShows.Controllers
             return "erro";
         }
 
-        public IActionResult SalvaImagemEvento(string Id) {
+        public IActionResult SalvaImagemEvento(string Id)
+        {
             ViewData["eventoId"] = Id;
             return View();
         }
@@ -99,30 +102,16 @@ namespace CasaDeShows.Controllers
         {
             ViewBag.casaDeShow = _context.casasDeShow.ToList();
 
-            if(_context.casasDeShow.Count() != 0){
+            if (_context.casasDeShow.Count() != 0)
+            {
                 return View(await _context.Eventos.ToListAsync());
-            } else {
+            }
+            else
+            {
                 return View("ErroEvento");
             }
         }
 
-        // GET: Eventos/Details/5
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var eventos = await _context.Eventos
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (eventos == null)
-            {
-                return NotFound();
-            }
-
-            return View(eventos);
-        }
 
         // GET: Eventos/Create
         public IActionResult Criando()
@@ -149,7 +138,18 @@ namespace CasaDeShows.Controllers
                 return NotFound();
             }
             ViewBag.batata = _context.casasDeShow.ToList();
-            return View(eventos);
+            EventoDTO eveDTO = new EventoDTO()
+            {
+                Id = eventos.Id,
+                Nome = eventos.Nome,
+                Preco = eventos.Preco.ToString(),
+                CasaDeShowsId = eventos.CasaDeShows.Id.ToString(),
+                GeneroId = eventos.Genero.ToString(),
+                Data = eventos.Data,
+                Ingressos = eventos.Ingressos.ToString()
+            };
+
+            return View(eveDTO);
         }
 
         // POST: Eventos/Edit/5
@@ -157,19 +157,31 @@ namespace CasaDeShows.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Nome,CasaDeShows,preco,Genero,Data,Ingressos")] EventoDTO eventos)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Nome,CasaDeShowsId,Preco,GeneroId,Data,Ingressos")] EventoDTO eventos)
         {
             if (ModelState.IsValid)
             {
+                var eventoEditar = _context.Eventos.Where(eve => eve.Id == id).FirstOrDefault();
+                eventoEditar.Nome = eventos.Nome;
+                eventoEditar.Preco = Convert.ToDouble(eventos.Preco);
+                eventoEditar.Ingressos = Convert.ToInt32(eventos.Ingressos);
+                eventoEditar.Data = eventos.Data;
+                eventoEditar.Genero = Convert.ToInt32(eventos.GeneroId);
+
+                var casaDeshow = _context.casasDeShow.Where(cs => cs.Id == Convert.ToInt32(eventos.CasaDeShowsId)).FirstOrDefault();
+                eventoEditar.CasaDeShows = casaDeshow;
+
+
                 try
                 {
                     ViewBag.batata = _context.casasDeShow.ToList();
-                    _context.Update(eventos);
+
+                    _context.Attach(eventoEditar).State = EntityState.Modified;
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                   throw;
+                    throw;
                 }
                 return RedirectToAction(nameof(Index));
             }
@@ -212,8 +224,9 @@ namespace CasaDeShows.Controllers
         }
 
         [HttpGet]
-        public IActionResult ErroEvento() {
-            return View();        
+        public IActionResult ErroEvento()
+        {
+            return View();
         }
     }
 }

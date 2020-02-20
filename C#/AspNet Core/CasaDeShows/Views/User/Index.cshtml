@@ -1,38 +1,56 @@
 @model IEnumerable<CasaDeShows.Models.Eventos>
+
+@using CasaDeShows.Models
+
 @{
     ViewData["Title"] = "teste";
     Layout = "_LayoutUser";
+    var eventos = Model.Count();
 }
-<div class="container" style="background-color: gray;">
-    @foreach(var item in Model){
-       <div class="card text-center" style="width: 18rem; float: left; margin-left: 5em; margin-top: 3em; margin-bottom: 3em;">
-        <img class="card-img-top" src="@Html.DisplayFor(modelItem => item.Imagem)" alt="Foto do Evento" style="overflow: hidden;">
-        <div class="card-body">
-        <h3 class="card-title text-dark mb-0">@Html.DisplayFor(modelItem => item.Nome)</h3>
+
+@if (eventos == 0)
+{
+    <div class="container">
+        <div class="jumbotron mt-4 text-center" style="height: 30em;">
+            <h1 class="text-danger text-center mt-4" style="font-size: 80px; border: 2px solid black; border-radius: 25px;">Nenhum Evento Disponivel no momento, volte novamente mais tarde.</h1>
+            <p class="mt-4">
+                <a class="btn btn-danger" asp-controller="Home" asp-action="Index" style="width: 20%; border: 2px solid black; margin-top: 3em;">Voltar</a>
+            </p>
         </div>
-    <ul class="list-group list-group-flush">
-        <li class="list-group-item">Local : @Html.DisplayFor(modelItem => item.CasaDeShows.Local)</li>
-        <li class="list-group-item">Ingressos Disponiveis: @Html.DisplayFor(modelItem => item.Ingressos)</li>
-        <li class="list-group-item">Data: @Html.DisplayFor(modelItem => item.Data)</li>
-        <li class="list-group-item">Preço: R$@Html.DisplayFor(modelItem => item.Preco) </li>
-        <li class="list-group-item">Gênero: @Html.DisplayFor(modelItem => item.Genero)</li>
-
-    </ul>
-    <div class="card-body">
-        <a type="button" class="btn btn-primary" id="btnComprar">Comprar</a>
     </div>
-    </div>
-    }
-</div>
+}
 
-<script src="~/js/jquery-3.4.1-COMPLETASSO.js"></script>
+            <div class="container" style="background-color: gray;">
+                @foreach (var item in Model)
+                {
+                    <div class="card text-center" style="width: 18rem; float: left; margin-left: 5em; margin-top: 3em; margin-bottom: 3em;">
+                        <img class="card-img-top" src="@Html.DisplayFor(modelItem => item.Imagem)" alt="Foto do Evento" style="overflow: hidden;">
+                        <div class="card-body">
+                            <h3 class="card-title text-dark mb-0">@Html.DisplayFor(modelItem => item.Nome)</h3>
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">Local : @Html.DisplayFor(modelItem => item.CasaDeShows.Local)</li>
+                            <li class="list-group-item">Ingressos Disponiveis: @Html.DisplayFor(modelItem => item.Ingressos)</li>
+                            <li class="list-group-item" id="data">Data: @Html.DisplayFor(modelItem => item.Data) </li>
+                            <li class="list-group-item">Preço: R$@Html.DisplayFor(modelItem => item.Preco) </li>
+                            <li class="list-group-item">Gênero: @Html.DisplayFor(modelItem => item.Genero)</li>
 
-<script type="text/javascript">
-    $(document).ready(function(){
-         $("#btnComprar").click(function() {
-            alert("teste");
-        });
-        $("#campoData").mask("dd/mm/yyyy");
-    });
+                        </ul>
+                        <div class="card-body">
+                            <a type="button" class="btn btn-primary" id="btnComprar">Comprar</a>
+                        </div>
+                    </div>
+                }
+            </div>
 
-</script>
+            <script src="~/js/jquery-3.4.1-COMPLETASSO.js"></script>
+
+                <script type="text/javascript">
+                    $(document).ready(function () {
+                        $("#btnComprar").click(function () {
+                            alert("teste");
+                        });
+
+                    });
+
+                </script>

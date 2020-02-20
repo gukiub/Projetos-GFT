@@ -1,4 +1,4 @@
-@model CasaDeShows.Models.Eventos
+@model CasaDeShows.DTO.EventoDTO
 
 <div class="container">
 <div class="jumbotron">
@@ -32,13 +32,13 @@
                 <span asp-validation-for="Ingressos" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="CasaDeShows" class="control-label">Casa de Show</label>
-                <select asp-for="CasaDeShows.Id" class="form-control" asp-items='@(new SelectList(@ViewBag.batata, "Id", "Nome"))'>
+                <label asp-for="CasaDeShowsId" class="control-label">Casa de Show</label>
+                <select asp-for="CasaDeShowsId" class="form-control" asp-items='@(new SelectList(@ViewBag.batata, "Id", "Nome"))'>
                 </select>
             </div>
             <div class="form-group">
-                <label asp-for="Genero" class="control-label">Genero</label>
-                <select asp-for="Genero" class="form-control" asp-items="Html.GetEnumSelectList<Generos>()">
+                <label asp-for="GeneroId" class="control-label">Genero</label>
+                <select asp-for="GeneroId" class="form-control" asp-items="Html.GetEnumSelectList<Generos>()">
                 </select>
             </div>
             <div class="form-group">
@@ -57,7 +57,8 @@
 
 <script src="~/js/jquery-3.4.1-COMPLETASSO.js"></script>
 <script type="text/javascript">
-    $(document).ready(function(){
+
+    $(document).ready(function () {
         function Evento(){
             var Nome;
             var CasaDeShowsId; 
@@ -66,7 +67,8 @@
             var Ingressos;
             var GeneroId;
         }
-   
+        
+
         $("#btnCadastrar").click(function() {
             var evento = new Evento();
             evento.Nome = $("#nome").val();
@@ -110,4 +112,5 @@
         });
 
     });
+
 </script>

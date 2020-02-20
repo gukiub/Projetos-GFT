@@ -60,10 +60,7 @@
                             <input asp-for="Input.RememberMe"/>
                             @Html.DisplayNameFor(m => m.Input.RememberMe)
                         </label><br>
-                    
-                    <p>
-                        <a id="forgot-password" asp-page="./ForgotPassword">Esqueceu sua senha?</a>
-                    </p>
+                  
                     <p>
                         <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Cadastrar uma nova conta.</a>
                     </p>

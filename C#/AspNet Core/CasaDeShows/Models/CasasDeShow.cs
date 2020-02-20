@@ -7,11 +7,11 @@ namespace CasaDeShows.Models
     {
         [Required]
         public int Id{get; set;}
-        [Required]
+        [Required(ErrorMessage = "Digite o nome da casa de show")]
         [StringLength(100, ErrorMessage = "• Nome muito grande, tente um nome menor.")]
         [MinLength(2, ErrorMessage = "• Nome muito pequeno, tente um nome maior.")]
         public string Nome{get;set;}
-        [Required]
+        [Required(ErrorMessage = "Digite o local da casa de show")]
         [StringLength(100, ErrorMessage = "• Nome do local muito grande, tente um nome menor.")]
         [MinLength(2, ErrorMessage = "• Nome do local muito pequeno, tente um nome maior.")]
         public string Local{get;set;}
