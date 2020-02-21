@@ -343,10 +343,8 @@ C:\Users\GOLS\Desktop\CasaDeShows\obj\Debug\netcoreapp3.1\Razor\Views\Eventos\Ed
 C:\Users\GOLS\Desktop\CasaDeShows\obj\Debug\netcoreapp3.1\Razor\Views\Eventos\Index.cshtml.g.cs
 C:\Users\gu_ki\Desktop\github\Projetos-GFT\C#\AspNet Core\CasaDeShows\obj\Debug\netcoreapp3.1\Razor\Views\Admin\Create.cshtml.g.cs
 C:\Users\gu_ki\Desktop\github\Projetos-GFT\C#\AspNet Core\CasaDeShows\obj\Debug\netcoreapp3.1\Razor\Views\Admin\Delete.cshtml.g.cs
-C:\Users\gu_ki\Desktop\github\Projetos-GFT\C#\AspNet Core\CasaDeShows\obj\Debug\netcoreapp3.1\Razor\Views\Admin\Details.cshtml.g.cs
 C:\Users\gu_ki\Desktop\github\Projetos-GFT\C#\AspNet Core\CasaDeShows\obj\Debug\netcoreapp3.1\Razor\Views\Admin\Edit.cshtml.g.cs
 C:\Users\gu_ki\Desktop\github\Projetos-GFT\C#\AspNet Core\CasaDeShows\obj\Debug\netcoreapp3.1\Razor\Views\Admin\Index.cshtml.g.cs
-C:\Users\gu_ki\Desktop\github\Projetos-GFT\C#\AspNet Core\CasaDeShows\obj\Debug\netcoreapp3.1\Razor\Views\Admin\NovaCasa.cshtml.g.cs
 C:\Users\gu_ki\Desktop\github\Projetos-GFT\C#\AspNet Core\CasaDeShows\obj\Debug\netcoreapp3.1\Razor\Views\Eventos\Delete.cshtml.g.cs
 C:\Users\gu_ki\Desktop\github\Projetos-GFT\C#\AspNet Core\CasaDeShows\obj\Debug\netcoreapp3.1\Razor\Views\Eventos\Edit.cshtml.g.cs
 C:\Users\gu_ki\Desktop\github\Projetos-GFT\C#\AspNet Core\CasaDeShows\obj\Debug\netcoreapp3.1\Razor\Views\Eventos\Index.cshtml.g.cs
@@ -547,3 +545,4 @@ C:\Users\gu_ki\Desktop\github\Projetos-GFT\C#\AspNet Core\CasaDeShows\obj\Debug\
 C:\Users\GOLS\Desktop\Projetos-GFT\C#\AspNet Core\CasaDeShows\obj\Debug\netcoreapp3.1\Razor\Views\Eventos\Error.cshtml.g.cs
 C:\Users\GOLS\Desktop\Projetos-GFT\C#\AspNet Core\CasaDeShows\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_LayoutUser.cshtml.g.cs
 C:\Users\GOLS\Desktop\Projetos-GFT\C#\AspNet Core\CasaDeShows\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_Layout.cshtml.g.cs
+C:\Users\gu_ki\Desktop\github\Projetos-GFT\C#\AspNet Core\CasaDeShows\obj\Debug\netcoreapp3.1\Razor\Views\User\Compra.cshtml.g.cs

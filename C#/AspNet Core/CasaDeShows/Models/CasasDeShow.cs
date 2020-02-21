@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Identity;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
@@ -14,6 +15,7 @@ namespace CasaDeShows.Models
         [Required(ErrorMessage = "Digite o local da casa de show")]
         [StringLength(100, ErrorMessage = "• Nome do local muito grande, tente um nome menor.")]
         [MinLength(2, ErrorMessage = "• Nome do local muito pequeno, tente um nome maior.")]
-        public string Local{get;set;}
+        public string Local {get;set;}
+        public IdentityUser User { get; set; }
     }
 }

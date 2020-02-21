@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Identity;
 using System;
 using System.ComponentModel.DataAnnotations;
 
@@ -24,5 +25,6 @@ namespace CasaDeShows.Models
         [Required]
         public int Ingressos { get; set; }
         public string Imagem { get; set; }
+        public IdentityUser User { get; set; }
     }
 }

@@ -90,7 +90,7 @@
                             }
                         </ul>
                         <div class="card-body">
-                            <a type="button" class="btn btn-primary" id="btnComprar">Comprar</a>
+                            <a asp-action="Comprando" class="btn btn-primary" asp-route-id="@item.Id">Comprar</a>
                         </div>
                     </div>
 
@@ -118,15 +118,10 @@
             </div>
 
             <script src="~/js/jquery-3.4.1-COMPLETASSO.js"></script>
-
                 <script type="text/javascript">
                     $(document).ready(function () {
                         $("#myModal").on("shown.bs.modal", function () {
                             $("#btnComprar").trigger("focus");
                         });
-                        
-
                     });
-
-                    
                 </script>

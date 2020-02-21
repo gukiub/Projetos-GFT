@@ -22,7 +22,8 @@ namespace CasaDeShows.controllers
         // GET: Admin
         public async Task<IActionResult> Index()
         {
-            return View(await _context.casasDeShow.ToListAsync());
+            var email = User.Identity.Name;
+            return View(await _context.casasDeShow.Where(cs => cs.User.UserName.Equals(email)).ToListAsync());
         }
 
         // GET: Admin/Details/5
@@ -59,6 +60,9 @@ namespace CasaDeShows.controllers
         {
             if (ModelState.IsValid)
             {
+                var email = User.Identity.Name;
+                var user = _context.Users.Where(use => use.Email.Equals(email)).FirstOrDefault();
+                casasDeShow.User = user;
                 _context.Add(casasDeShow);
                 await _context.SaveChangesAsync();
                 ViewBag.casaDeShow = _context.casasDeShow.First(p => p.Id == casasDeShow.Id);

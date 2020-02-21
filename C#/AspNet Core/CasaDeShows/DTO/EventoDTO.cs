@@ -27,5 +27,6 @@ namespace CasaDeShows.DTO
         public string Ingressos { get; set; }
         [Required(ErrorMessage = "preencha o genero")]
         public string GeneroId { get; set; }
+        public string CaminhoImagem { get; set; }
     }
 }

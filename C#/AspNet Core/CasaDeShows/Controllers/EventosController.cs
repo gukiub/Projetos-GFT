@@ -50,6 +50,10 @@ namespace CasaDeShows.Controllers
                 }
                 else
                 {
+                    var email = User.Identity.Name;
+                    var user = _context.Users.Where(use => use.Email.Equals(email)).FirstOrDefault();
+                    evento.User = user;
+
                     _context.Eventos.Add(evento);
                     _context.SaveChanges();
                     string Id = _context.Eventos.Where(eve => eve.Nome.Equals(eventoTemp.Nome)).FirstOrDefault().Id.ToString();
@@ -104,7 +108,8 @@ namespace CasaDeShows.Controllers
 
             if (_context.casasDeShow.Count() != 0)
             {
-                return View(await _context.Eventos.ToListAsync());
+                var email = User.Identity.Name;
+                return View(await _context.Eventos.Where(cs => cs.User.UserName.Equals(email)).ToListAsync());
             }
             else
             {
