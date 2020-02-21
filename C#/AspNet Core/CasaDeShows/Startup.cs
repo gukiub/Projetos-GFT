@@ -39,7 +39,7 @@ namespace CasaDeShows
             services.AddControllersWithViews();
             services.AddRazorPages();
 
-            // "injeÁ„o de dependencia" ele passa o data service para toda a aplicaÁ„o
+            // inje√ß√£o de dependencia passa o dataservice para toda a aplica√ß√£o, necess√°rio para gerar o banco automaticamente
             services.AddTransient<IDataService, DataService>();
             
             services.AddAuthorization(options => options.AddPolicy("Administrador", policy => policy.RequireClaim("Admin", "True")));
@@ -74,6 +74,7 @@ namespace CasaDeShows
                     pattern: "{controller=Home}/{action=Index}/{id?}");
                 endpoints.MapRazorPages();
             });
+            // codigo para gerar o banco automaticamente
             serviceProvider.GetService<IDataService>().InicializaDB();
         }
     }

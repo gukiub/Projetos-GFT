@@ -14,9 +14,11 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace CasaDeShows.Controllers
 {
+    [Authorize]
     [Authorize(Policy = "Administrador")]
     public class EventosController : Controller
     {
+        //injeção de dependencias, ligando o banco ao controller
         private readonly ApplicationDbContext _context;
         private readonly IHostingEnvironment _hostingEnvironment;
 
@@ -27,6 +29,7 @@ namespace CasaDeShows.Controllers
         }
 
 
+        //método para cadastrar via java script com aspnet, quando clica no botão ele puxa esse metodo no js
         [HttpPost]
         public string EnviaForm([FromBody] EventoDTO eventoTemp)
         {
@@ -44,12 +47,14 @@ namespace CasaDeShows.Controllers
                     Imagem = "/Login_v16/images/bg-01.jpg"
                 };
                 var existe = _context.casasDeShow.Where(ex => ex.Nome.Equals(eventoTemp.Nome)).Any();
+                // caso atinja essa condição o site quebra
                 if (existe == true)
                 {
                     return "erro";
                 }
                 else
                 {
+                    //puxando o email do usuário para usar como um id
                     var email = User.Identity.Name;
                     var user = _context.Users.Where(use => use.Email.Equals(email)).FirstOrDefault();
                     evento.User = user;
@@ -65,33 +70,33 @@ namespace CasaDeShows.Controllers
 
         public IActionResult SalvaImagemEvento(string Id)
         {
+            //passando para a view o id
             ViewData["eventoId"] = Id;
             return View();
         }
 
-
+        //metodo para puxar a imagem do computador e mandar para o projeto
         [HttpPost]
         public IActionResult SalvarImagem(ImagemEventoDTO imagem)
         {
             string email = User.Identity.Name.ToString().Replace("@", "_");
             string uniqueFileName = null;
 
-            // If the Photo property on the incoming model object is not null, then the user
-            // has selected an image to upload.
+            
             string uploadsFolder = Path.Combine(_hostingEnvironment.WebRootPath, "usuarios/" + email + "/imagePerfil"); // acha a pasta root 
 
-            if (!Directory.Exists(uploadsFolder))
+            if (!Directory.Exists(uploadsFolder)) // se o diretório não existe ele cria um
             {
                 Directory.CreateDirectory(uploadsFolder);
             }
 
             uniqueFileName = Guid.NewGuid().ToString() + "_" + imagem.ImagemEvento.FileName; // cria um nome unico para a imagem
 
-            string filePath = Path.Combine(uploadsFolder, uniqueFileName); // cria o caminho completop
+            string filePath = Path.Combine(uploadsFolder, uniqueFileName); // cria o caminho completo
 
             imagem.ImagemEvento.CopyTo(new FileStream(filePath, FileMode.Create)); // coloca a imagem 
-            var pesquisa = _context.Eventos.Where(eve => eve.Id == imagem.EventoId).FirstOrDefault();
-            string caminhoDaView = string.Format("/usuarios/{0}/imagePerfil/{1}", email, uniqueFileName);
+            var pesquisa = _context.Eventos.Where(eve => eve.Id == imagem.EventoId).FirstOrDefault(); // liga a imagem ao usuário
+            string caminhoDaView = string.Format("/usuarios/{0}/imagePerfil/{1}", email, uniqueFileName); // gera o caminho para a url
             pesquisa.Imagem = caminhoDaView;
             _context.Attach(pesquisa).State = EntityState.Modified;
             _context.SaveChanges();
@@ -106,6 +111,7 @@ namespace CasaDeShows.Controllers
         {
             ViewBag.casaDeShow = _context.casasDeShow.ToList();
 
+            // função para checar se existe casa de show e redirecionar para um erro caso não exista
             if (_context.casasDeShow.Count() != 0)
             {
                 var email = User.Identity.Name;

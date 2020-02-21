@@ -4,14 +4,16 @@
     ViewData["Title"] = "Compra";
 }
 
-<h1>Compra</h1>
 
-<h4>EventoDTO</h4>
+<div class="container-fluid">
+<div class="jumbotron">
+<h1 class="text-dark">Comprar Ingressos</h1>
+
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <div class="w-100" style="height: 50em;">
-            <img src="@Model.CaminhoImagem" width="100%" height="100%"/>
+        <div class="w-100" style="height: 30em;">
+            <img src="@Model.CaminhoImagem" width="100%" height="100%" class="w-100"/>
         </div>
             <form asp-controller="User" asp-action="ConfirmarCompra" method="post">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -31,29 +33,30 @@
                 </div>
                 <div class="form-group">
                     <label asp-for="Data" class="control-label"></label>
-                    <input asp-for="Data" class="form-control" readonly />
+                    <input asp-for="Data" type="date" class="form-control" readonly />
                     <span asp-validation-for="Data" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <label asp-for="Ingressos" class="control-label"></label>
+                    <label asp-for="Ingressos" class="control-label">Ingressos Disponiveis</label>
                     <input asp-for="Ingressos" class="form-control" readonly />
                     <span asp-validation-for="Ingressos" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     <label class="control-label">Quantidade de Ingressos da compra</label>
-                    <input class="form-control" type="number" min="1" max="@Model.Ingressos" name="quantidade"/>
+                    <input class="form-control" type="number" min="1" max="@Model.Ingressos" name="quantidade" required/>
                 </div>
                 <div class="form-group">
-                    <input type="submit" value="Save" class="btn btn-primary" />
+                    <input type="submit" value="Salvar" class="btn btn-primary" />
                 </div>
             </form>
         </div>
     </div>
 
     <div>
-        <a asp-action="Index">Back to List</a>
+        <a asp-action="Index">Voltar para a lista</a>
     </div>
-
+</div>
+</div>
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }

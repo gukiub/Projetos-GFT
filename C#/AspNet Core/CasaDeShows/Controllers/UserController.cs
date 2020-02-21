@@ -10,6 +10,7 @@ using CasaDeShows.Models;
 using CasaDeShows.DTO;
 using Microsoft.AspNetCore.Hosting;
 using System.IO;
+using Microsoft.AspNetCore.Authorization;
 
 namespace CasaDeShows.Controllers
 {
@@ -28,8 +29,10 @@ namespace CasaDeShows.Controllers
             return View(eventos);
         }
 
+        [Authorize]
         [HttpGet]
         public IActionResult Comprando(int id) {
+            // encontra o usuário e casa de show quando clicado no botão, converte um model em DTO e retorna a view com os dados já nos inputs
             var evento = _context.Eventos.Include(cs => cs.CasaDeShows).FirstOrDefault(eve => eve.Id == id);
             EventoDTO eveDTO = new EventoDTO();
             eveDTO.Id = evento.Id;
@@ -40,18 +43,16 @@ namespace CasaDeShows.Controllers
             eveDTO.Data = evento.Data;
             eveDTO.CasaDeShowsId = evento.CasaDeShows.Id.ToString();
             eveDTO.CaminhoImagem = evento.Imagem;
-            //evento.Ingressos -= 1;
-            //_context.Attach(evento).State = EntityState.Modified;
-            //_context.SaveChanges();
             return View("Compra", eveDTO);
         }
 
+        [Authorize]
         [HttpPost]
         public IActionResult ConfirmarCompra(int quantidade, [Bind("Id")] EventoDTO eventos) {
             var compra = _context.Eventos.Where(eve => eve.Id == eventos.Id).FirstOrDefault();
-            compra.Ingressos -= quantidade;
-            _context.Attach(compra).State = EntityState.Modified;
-            _context.SaveChanges();
+            compra.Ingressos -= quantidade; // ao realizar a compra desconta o ingresso
+            _context.Attach(compra).State = EntityState.Modified; // diz que o objeto foi modificado
+            _context.SaveChanges(); // sobe para o banco
             return RedirectToAction("Index");
         }
     }

@@ -4,6 +4,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
+//Função para autoCriar o banco
+
+
 namespace CasaDeShows.Config
 {
     public interface IDataService

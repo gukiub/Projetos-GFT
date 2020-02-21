@@ -7,9 +7,12 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using CasaDeShows.Data;
 using CasaDeShows.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace CasaDeShows.controllers
 {
+    [Authorize]
+    [Authorize(Policy = "Administrador")]
     public class AdminController : Controller
     {
         private readonly ApplicationDbContext _context;

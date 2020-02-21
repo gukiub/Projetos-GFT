@@ -5,7 +5,7 @@
 @{
     ViewData["Title"] = "teste";
     Layout = "_LayoutUser";
-    var eventos = Model.Count();
+    var eventos = Model.Count(); // conta quantos eventos possui na model
 }
 
 @if (eventos == 0)
@@ -33,6 +33,8 @@
                             <li class="list-group-item">Ingressos Disponiveis: @Html.DisplayFor(modelItem => item.Ingressos)</li>
                             <li class="list-group-item" id="data">Data: @Html.DisplayFor(modelItem => item.Data) </li>
                             <li class="list-group-item">Preço: R$@Html.DisplayFor(modelItem => item.Preco) </li>
+                            
+                            <!-- codigo para substituir o numero que retorna da classe enum genero por um texto -->
                             @{
                                 switch(item.Genero){
                                     case 1:
@@ -88,6 +90,7 @@
                                         break;
                                 }
                             }
+                            
                         </ul>
                         <div class="card-body">
                             <a asp-action="Comprando" class="btn btn-primary" asp-route-id="@item.Id">Comprar</a>
