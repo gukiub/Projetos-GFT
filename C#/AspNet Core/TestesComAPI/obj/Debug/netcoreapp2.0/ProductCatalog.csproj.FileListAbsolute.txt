@@ -1,0 +1,10 @@
+C:\Users\GOLS\Desktop\Projetos-GFT\C#\AspNet Core\TestesComAPI\bin\Debug\netcoreapp2.0\ProductCatalog.deps.json
+C:\Users\GOLS\Desktop\Projetos-GFT\C#\AspNet Core\TestesComAPI\bin\Debug\netcoreapp2.0\ProductCatalog.runtimeconfig.json
+C:\Users\GOLS\Desktop\Projetos-GFT\C#\AspNet Core\TestesComAPI\bin\Debug\netcoreapp2.0\ProductCatalog.runtimeconfig.dev.json
+C:\Users\GOLS\Desktop\Projetos-GFT\C#\AspNet Core\TestesComAPI\bin\Debug\netcoreapp2.0\ProductCatalog.dll
+C:\Users\GOLS\Desktop\Projetos-GFT\C#\AspNet Core\TestesComAPI\bin\Debug\netcoreapp2.0\ProductCatalog.pdb
+C:\Users\GOLS\Desktop\Projetos-GFT\C#\AspNet Core\TestesComAPI\obj\Debug\netcoreapp2.0\ProductCatalog.csprojAssemblyReference.cache
+C:\Users\GOLS\Desktop\Projetos-GFT\C#\AspNet Core\TestesComAPI\obj\Debug\netcoreapp2.0\ProductCatalog.AssemblyInfoInputs.cache
+C:\Users\GOLS\Desktop\Projetos-GFT\C#\AspNet Core\TestesComAPI\obj\Debug\netcoreapp2.0\ProductCatalog.AssemblyInfo.cs
+C:\Users\GOLS\Desktop\Projetos-GFT\C#\AspNet Core\TestesComAPI\obj\Debug\netcoreapp2.0\ProductCatalog.dll
+C:\Users\GOLS\Desktop\Projetos-GFT\C#\AspNet Core\TestesComAPI\obj\Debug\netcoreapp2.0\ProductCatalog.pdb

@@ -1,0 +1,6 @@
+C:\Users\GOLS\Desktop\Projetos-GFT\C#\AspNet Core\TestesComAPI\obj\Debug\netcoreapp3.1\ProductCatalog.csprojAssemblyReference.cache
+C:\Users\GOLS\Desktop\Projetos-GFT\C#\AspNet Core\TestesComAPI\obj\Debug\netcoreapp3.1\staticwebassets\ProductCatalog.StaticWebAssets.Manifest.cache
+C:\Users\GOLS\Desktop\Projetos-GFT\C#\AspNet Core\TestesComAPI\obj\Debug\netcoreapp3.1\staticwebassets\ProductCatalog.StaticWebAssets.xml
+C:\Users\GOLS\Desktop\Projetos-GFT\C#\AspNet Core\TestesComAPI\obj\Debug\netcoreapp3.1\ProductCatalog.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\GOLS\Desktop\Projetos-GFT\C#\AspNet Core\TestesComAPI\obj\Debug\netcoreapp3.1\ProductCatalog.AssemblyInfoInputs.cache
+C:\Users\GOLS\Desktop\Projetos-GFT\C#\AspNet Core\TestesComAPI\obj\Debug\netcoreapp3.1\ProductCatalog.AssemblyInfo.cs
