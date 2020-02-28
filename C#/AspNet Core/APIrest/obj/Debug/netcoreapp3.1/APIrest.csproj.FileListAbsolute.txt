@@ -38,3 +38,8 @@ C:\Users\GOLS\Desktop\Projetos-GFT\C#\AspNet Core\APIrest\bin\Debug\netcoreapp3.
 C:\Users\GOLS\Desktop\Projetos-GFT\C#\AspNet Core\APIrest\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Logging.Abstractions.dll
 C:\Users\GOLS\Desktop\Projetos-GFT\C#\AspNet Core\APIrest\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Options.dll
 C:\Users\GOLS\Desktop\Projetos-GFT\C#\AspNet Core\APIrest\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Primitives.dll
+C:\Users\GOLS\Desktop\Projetos-GFT\C#\AspNet Core\APIrest\bin\Debug\netcoreapp3.1\Microsoft.OpenApi.dll
+C:\Users\GOLS\Desktop\Projetos-GFT\C#\AspNet Core\APIrest\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\GOLS\Desktop\Projetos-GFT\C#\AspNet Core\APIrest\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\GOLS\Desktop\Projetos-GFT\C#\AspNet Core\APIrest\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\GOLS\Desktop\Projetos-GFT\C#\AspNet Core\APIrest\obj\Debug\netcoreapp3.1\APIrest.MvcApplicationPartsAssemblyInfo.cs

@@ -29,6 +29,10 @@ namespace APIrest
         {
             services.AddDbContext<ApplicationDbContext>(options => options.UseMySql(Configuration.GetConnectionString("DefaultConnection")));
             services.AddControllers();
+            //swagger
+            services.AddSwaggerGen(config => {
+                config.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo {Title = "API de produtos", Version = "v1"});
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -44,7 +48,12 @@ namespace APIrest
             app.UseRouting();
 
             app.UseAuthorization();
-
+            app.UseSwagger(config => {
+                config.RouteTemplate = "doc/{documentName}/swagger.json";
+            }); // gera um arquivo json // swagger.json
+            app.UseSwaggerUI(config => {  // Views HTML do swagger
+                config.SwaggerEndpoint("/doc/v1/swagger.json", "v1 docs");
+            });
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
