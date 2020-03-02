@@ -12,6 +12,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 namespace APIrest
 {
@@ -29,6 +32,23 @@ namespace APIrest
         {
             services.AddDbContext<ApplicationDbContext>(options => options.UseMySql(Configuration.GetConnectionString("DefaultConnection")));
             services.AddControllers();
+            
+            string ChaveDeSeguranca = "eu_gosto_de_batata_e_lasagna"; // Chave de segurança
+            var chaveSimetrica = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(ChaveDeSeguranca));
+            
+            //define que sera usado a autenticação jwt
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options => {
+                // como o sistema deve ler o token
+                options.TokenValidationParameters = new TokenValidationParameters{
+                    ValidateIssuer = true,
+                    ValidateAudience = true,
+                    ValidateIssuerSigningKey = true,
+                    ValidIssuer = "Batata",
+                    ValidAudience = "Pessoas_normais",
+                    IssuerSigningKey = chaveSimetrica
+                };
+            });
+
             //swagger
             services.AddSwaggerGen(config => {
                 config.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo {Title = "API de produtos", Version = "v1"});
@@ -44,6 +64,7 @@ namespace APIrest
             }
 
             app.UseHttpsRedirection();
+            app.UseAuthentication(); // aplica o sistema de autenticação na aplicação
 
             app.UseRouting();
 

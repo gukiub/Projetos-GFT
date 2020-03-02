@@ -43,3 +43,10 @@ C:\Users\GOLS\Desktop\Projetos-GFT\C#\AspNet Core\APIrest\bin\Debug\netcoreapp3.
 C:\Users\GOLS\Desktop\Projetos-GFT\C#\AspNet Core\APIrest\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerGen.dll
 C:\Users\GOLS\Desktop\Projetos-GFT\C#\AspNet Core\APIrest\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerUI.dll
 C:\Users\GOLS\Desktop\Projetos-GFT\C#\AspNet Core\APIrest\obj\Debug\netcoreapp3.1\APIrest.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\GOLS\Desktop\Projetos-GFT\C#\AspNet Core\APIrest\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\GOLS\Desktop\Projetos-GFT\C#\AspNet Core\APIrest\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Logging.dll
+C:\Users\GOLS\Desktop\Projetos-GFT\C#\AspNet Core\APIrest\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Tokens.dll
+C:\Users\GOLS\Desktop\Projetos-GFT\C#\AspNet Core\APIrest\bin\Debug\netcoreapp3.1\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\GOLS\Desktop\Projetos-GFT\C#\AspNet Core\APIrest\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\GOLS\Desktop\Projetos-GFT\C#\AspNet Core\APIrest\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.dll
+C:\Users\GOLS\Desktop\Projetos-GFT\C#\AspNet Core\APIrest\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll

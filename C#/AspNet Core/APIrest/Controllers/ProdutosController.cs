@@ -3,24 +3,45 @@ using System.Linq;
 using APIrest.Data;
 using APIrest.Models;
 using Microsoft.AspNetCore.Mvc;
+using APIrest.HATEOAS;
+using System.Collections.Generic;
+using Microsoft.AspNetCore.Authorization;
 
 namespace APIrest.Controllers
 {
     [Route("api/v1/[controller]")] // versão legado - versão sem suporte
     [ApiController]
+    [Authorize(Roles = "Admin")]
     public class ProdutosController : ControllerBase
     {
         readonly ApplicationDbContext _context;
+        private HATEOAS.HATEOAS HATEOAS;
 
         public ProdutosController(ApplicationDbContext context)
         {
             _context = context;
+            HATEOAS = new HATEOAS.HATEOAS("localhost:5001/api/v1/Produtos");
+            HATEOAS.AddAction("GET_INFO", "GET");
+            HATEOAS.AddAction("DELETE_PRODUCT", "DELETE");
+            HATEOAS.AddAction("EDIT_PRODUCT", "PATCH");
+        }
+
+        [HttpGet("teste")]
+        public IActionResult TesteClaims(){
+            return Ok(HttpContext.User.Claims.First(claim => claim.Type.ToString().Equals("id", StringComparison.InvariantCultureIgnoreCase)).Value);
         }
 
         [HttpGet]
         public IActionResult Get(){
             var produtos = _context.Produtos.ToList();
-            return Ok(produtos); // Status code = 200 && dados
+            List<ProdutoContainer> produtosHATEOAS = new List<ProdutoContainer>();
+            foreach(var prod in produtos){
+                ProdutoContainer produtoHATEOAS = new ProdutoContainer();
+                produtoHATEOAS.produto = prod;
+                produtoHATEOAS.links = HATEOAS.GetActions(prod.Id.ToString());
+                produtosHATEOAS.Add(produtoHATEOAS);
+            }
+            return Ok(produtosHATEOAS); // Status code = 200 && dados
         }
 
         [HttpGet("{id}")]
@@ -28,9 +49,12 @@ namespace APIrest.Controllers
             try
             {
                 var produto = _context.Produtos.First(p => p.Id == id);
-                return Ok(produto);
+                ProdutoContainer produtoHATEOAS = new ProdutoContainer();
+                produtoHATEOAS.produto = produto;
+                produtoHATEOAS.links = HATEOAS.GetActions(produto.Id.ToString());
+                return Ok(produtoHATEOAS);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 Response.StatusCode = 404;
                 return new ObjectResult("");
@@ -45,7 +69,7 @@ namespace APIrest.Controllers
                 return new ObjectResult(new {msg = "O preço do produto não pode ser menor que zero ou igual a zero."});
             }
 
-            if(pTemp.Nome.Length <= 1){
+            if(pTemp.Nome == null){
                 Response.StatusCode = 400;
                 return new ObjectResult(new {msg = "O nome do produto precisa conter mais de 1 caracter."});
             }
@@ -69,7 +93,7 @@ namespace APIrest.Controllers
                 _context.SaveChanges();
                 return Ok();
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 Response.StatusCode = 404;
                 return new ObjectResult("");
@@ -98,7 +122,7 @@ namespace APIrest.Controllers
                         return new ObjectResult(new {msg = "Produto não encontrado"});
                     }
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     Response.StatusCode = 400;
                     return new ObjectResult(new {msg = "Produto não encontrado"});
@@ -117,6 +141,11 @@ namespace APIrest.Controllers
         public class ProdutoTemp{
             public string Nome { get; set; }
             public float Preco { get; set; }
+        }
+
+        public class ProdutoContainer{
+            public Produto produto {get; set;}
+            public Link[] links {get; set;}
         }
     }
 }
