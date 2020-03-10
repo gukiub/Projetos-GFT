@@ -13,6 +13,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using CasaDeShows.Config;
+using System.IO;
+using System.Reflection;
 
 namespace CasaDeShows
 {
@@ -36,13 +38,20 @@ namespace CasaDeShows
                 config.Password.RequireLowercase = false;
             })
                 .AddEntityFrameworkStores<ApplicationDbContext>();
-            services.AddControllersWithViews();
+            services.AddControllersWithViews(conf => conf.AllowEmptyInputInBodyModelBinding = true);
             services.AddRazorPages();
 
             // injeção de dependencia passa o dataservice para toda a aplicação, necessário para gerar o banco automaticamente
             services.AddTransient<IDataService, DataService>();
-            
             services.AddAuthorization(options => options.AddPolicy("Administrador", policy => policy.RequireClaim("Admin", "True")));
+        
+            services.AddSwaggerGen(config => {
+                config.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo {Title = "API Casa de Shows", Version = "v1"});
+                var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+                config.IncludeXmlComments(xmlPath);
+            });
+        
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -66,6 +75,13 @@ namespace CasaDeShows
 
             app.UseAuthentication();
             app.UseAuthorization();
+
+            app.UseSwagger(config => {
+                config.RouteTemplate = "doc/{documentName}/swagger.json";
+            }); // gera um arquivo json // swagger.json
+            app.UseSwaggerUI(config => {  // Views HTML do swagger
+                config.SwaggerEndpoint("/doc/v1/swagger.json", "v1 docs");
+            });
 
             app.UseEndpoints(endpoints =>
             {

@@ -548,3 +548,11 @@ C:\Users\GOLS\Desktop\Projetos-GFT\C#\AspNet Core\CasaDeShows\obj\Debug\netcorea
 C:\Users\gu_ki\Desktop\github\Projetos-GFT\C#\AspNet Core\CasaDeShows\obj\Debug\netcoreapp3.1\Razor\Views\User\Compra.cshtml.g.cs
 C:\Users\GOLS\Desktop\Projetos-GFT\C#\AspNet Core\CasaDeShows\obj\Debug\netcoreapp3.1\Razor\Views\User\Compra.cshtml.g.cs
 C:\Users\GOLS\Desktop\Projetos-GFT\C#\AspNet Core\CasaDeShows\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\Account\AccessDenied.cshtml.g.cs
+C:\Users\GOLS\Desktop\Projetos-GFT\C#\AspNet Core\CasaDeShows\bin\Debug\netcoreapp3.1\Microsoft.OpenApi.dll
+C:\Users\GOLS\Desktop\Projetos-GFT\C#\AspNet Core\CasaDeShows\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\GOLS\Desktop\Projetos-GFT\C#\AspNet Core\CasaDeShows\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\GOLS\Desktop\Projetos-GFT\C#\AspNet Core\CasaDeShows\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\GOLS\Desktop\Projetos-GFT\C#\AspNet Core\CasaDeShows\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.Annotations.dll
+C:\Users\GOLS\Desktop\Projetos-GFT\C#\AspNet Core\CasaDeShows\bin\Debug\netcoreapp3.1\CasaDeShows.xml
+C:\Users\GOLS\Desktop\Projetos-GFT\C#\AspNet Core\CasaDeShows\obj\Debug\netcoreapp3.1\CasaDeShows.xml
+C:\Users\GOLS\Desktop\Projetos-GFT\C#\AspNet Core\CasaDeShows\obj\Debug\netcoreapp3.1\Razor\Views\User\Historico.cshtml.g.cs
