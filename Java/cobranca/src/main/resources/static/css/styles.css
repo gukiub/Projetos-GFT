@@ -1,0 +1,13 @@
+@charset "utf-8";
+
+.card{
+	margin: 20px 15px 15px 15px;
+}
+
+.alert{
+	margin: 15px 15px 15px 15px;
+}
+
+.alert-dismissible .close{
+	top: -3px;
+}
