@@ -11,3 +11,11 @@
 .alert-dismissible .close{
 	top: -3px;
 }
+
+.aw-link-panel{
+	float: right;
+}
+
+.aw-titulo-panel{
+	float: left;
+}

@@ -8,9 +8,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
 
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.NumberFormat;
+
 
 import java.util.Date;
 import java.math.BigDecimal;
@@ -22,19 +24,25 @@ public class Titulo {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long codigo;
 	
+	@NotNull(message = "Descrição não pode ser nula")
 	private String descricao;
 	
+	@NotNull(message = "Data não pode ser nula")
 	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	@Temporal(TemporalType.DATE)
 	private Date dataVencimento;
 	
+	@NotNull(message = "Valor não pode ser nulo")
 	@NumberFormat(pattern = "#,##0.00")
 	private BigDecimal valor;
 	
+	@NotNull(message = "Status não pode ser nulo")
 	@Enumerated(EnumType.STRING)
 	private StatusTitulo status;
 	
-	
+	public boolean isPendente(){
+		return StatusTitulo.PENDENTE.equals(this.status);
+	}
 	
 	@Override
 	public int hashCode() {

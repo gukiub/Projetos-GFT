@@ -1,73 +1,77 @@
 <!DOCTYPE html>
-<html xmlns:xlink="http://www.w3.org/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org/"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="LayoutPadrao">
 <head>
-<meta charset="utf-8" />
 <title>Cadastro de titulo</title>
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous" />
-<link rel="stylesheet" href="/css/styles.css"/>
 </head>
-<body>
 
-<!-- Image and text -->
-<nav class="navbar navbar bg-dark">
-  <a class="navbar-brand" href="#" style="color: white;">
-    <img src="/images/logo.png" width="30" height="30" class="d-inline-block align-top" alt="" />
-    Batata
-  </a>
-</nav>
+<section layout:fragment="conteudo">
+	<form class="form-horizontal" method="POST" action="/titulos"
+		th:object="${titulo}">
+		<div class="alert alert-success alert-dismissible" role="alert"
+			th:if="${!#strings.isEmpty(mensagem)}">
+			<button type="button" class="close" data-dismiss="alert">x</button>
+			<span th:text="${mensagem}">Titulo salvo com sucesso!!!</span>
+		</div>
 
-<form class="form-horizontal" method="POST" action="/titulos">
-	<div class="alert alert-success alert-dismissible" role="alert" th:if="${!#strings.isEmpty(mensagem)}">
-		<button type="button" class="close" data-dismiss="alert">x</button>
-		<span th:text="${mensagem}">Titulo salvo com sucesso!!!</span>
-	</div>
-	<div class="card">
-  		<div class="card-header">
-    		<h3>Novo Titulo</h3>
-  		</div>
- 	<div class="card-body">
-    	<blockquote class="blockquote mb-0">
-      		<div class="form-group">
-      			<label for="descricao" class="col-sm-2 control-label">Descrição</label>
-      			<div class="col-sm-4">
-      				<input type="text" class="form-control" id="descricao" name="descricao" />
-      			</div>
-      		</div>
-      		<div class="form-group">
-      			<label for="dataVencimento" class="col-sm-2 control-label">Data de vencimento</label>
-      			<div class="col-sm-2">
-      				<input type="text" class="form-control" id="dataVencimento" name="dataVencimento"/>
-      			</div>
-      		</div>
-      		<div class="form-group">
-      			<label for="valor" class="col-sm-2 control-label">Valor</label>
-      			<div class="col-sm-2">
-      				<input type="text" class="form-control" id="valor" name="valor"/>
-      			</div>
-      		</div>
-      		<div class="form-group">
-      			<label for="status" class="col-sm-2 control-label" name="status">Status</label>
-      			<div class="col-sm-2">
-      				<select class="form-control" id="status" name="status">
-      					<option th:each="status : ${statusTitulo}" th:value="${status}" th:text="${status.descricao}"></option>
-      				</select>
-      			</div>
-      		</div>
-      		<div class="form-group">
-      			<div class="col-sm-offset-2 col-sm-10">
-      				<button type="submit" class="btn btn-primary">Salvar</button>
-      			</div>
-      		</div>
-    	</blockquote>
-  	</div>
-	</div>
-</form>
+		<div class="alert alert-danger" th:if="${#fields.hasAnyErrors()}">
+			<div th:each="detailedError : ${#fields.detailedErrors()}">
+				<span th:text="${detailedError.message}"></span>
+			</div>
+		</div>
 
 
+		<div class="card">
+			<div class="card-header">
+				<div class="clearfix">
+					<h3 class="aw-titulo-panel">Novo Titulo</h3>
+					<a class="btn btn-danger aw-link-panel" href="/titulos">Voltar</a>
+				</div>
+			</div>
+			<div class="card-body">
+				<blockquote class="blockquote mb-0">
+					<div class="form-group">
+						<label for="descricao" class="col-sm-2 control-label">Descrição</label>
+						<div class="col-sm-4">
+							<input type="text" class="form-control" id="descricao"
+								name="descricao" />
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="dataVencimento" class="col-sm-2 control-label">Data
+							de vencimento</label>
+						<div class="col-sm-2">
+							<input type="text" class="form-control" id="dataVencimento"
+								name="dataVencimento" />
+						</div>
+					</div>
+					<div class="form-group" >
+						<label for="valor" class="col-sm-2 control-label">Valor</label>
+						<div class="col-sm-2">
+							<input type="text" class="form-control" id="valor" name="valor" th:classappend="${#fields.hasErrors('valor')} ? is-invalid" />
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="status" class="col-sm-2 control-label" name="status">Status</label>
+						<div class="col-sm-2">
+							<select class="form-control" id="status" name="status">
+								<option th:each="status : ${statusTitulo}" th:value="${status}"
+									th:text="${status.descricao}"></option>
+							</select>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-offset-2 col-sm-10">
+							<button type="submit" class="btn btn-primary">Salvar</button>
+						</div>
+					</div>
+				</blockquote>
+			</div>
+		</div>
+	</form>
 
 
-<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-</body>
+</section>
 </html>
