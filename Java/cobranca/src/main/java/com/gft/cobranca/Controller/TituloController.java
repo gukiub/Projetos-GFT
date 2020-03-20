@@ -49,23 +49,32 @@ public class TituloController {
 	@RequestMapping
 	public ModelAndView pesquisar() {
 		List<Titulo> todosTitulos = titulos.findAll();
-		ModelAndView mv = new ModelAndView(CADASTRO_VIEW);
-		System.out.println("aaaaaaaaaaaaaaa");
+		ModelAndView mv = new ModelAndView("PesquisaTitulos");
 		mv.addObject("titulos", todosTitulos);
 		return mv;
 	}
 
 	@RequestMapping("{codigo}")
-	public ModelAndView edicao(@PathVariable Long codigo) {
-		Titulo titulo = titulos.findById(codigo).get();
-
+	public ModelAndView edicao(@PathVariable("codigo") Titulo titulo) {
 		ModelAndView mv = new ModelAndView(CADASTRO_VIEW);
 		mv.addObject(titulo);
 		return mv;
 	}
 
+	@RequestMapping(value="{codigo}", method = RequestMethod.DELETE)
+	public String excluir(@PathVariable Long codigo) {
+		titulos.deleteById(codigo);
+		
+		return "redirect:/titulos";
+	}
+	
+	
 	@ModelAttribute("statusTitulo")
 	public List<StatusTitulo> todosStatusTitulo() {
 		return Arrays.asList(StatusTitulo.values());
 	}
+	
+	
+	
+	
 }

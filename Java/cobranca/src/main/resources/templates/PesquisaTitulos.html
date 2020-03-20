@@ -37,22 +37,32 @@
 						<td class="text-center" th:text="${titulo.descricao}"></td>
 						<td class="text-center" th:text="${{titulo.dataVencimento}}"></td>
 						<td class="text-center" th:text="|R$ ${{titulo.valor}}|"></td>
-						<td class="text-center">
-							<span class="badge" th:text="${titulo.status.descricao}" th:classappend="${titulo.pendente ? 'badge-danger' : 'badge-success'}">Sucess</span>
+						<td class="text-center"><span class="badge"
+							th:text="${titulo.status.descricao}"
+							th:classappend="${titulo.pendente ? 'badge-danger' : 'badge-success'}">Sucess</span>
 						</td>
-						<td class="text-center">
-							<a class="btn btn-link btn-xs" th:href="titulos/{codigo}">
-								<i class="fas fa-edit"></i>
-							</a>
-						</td>
+						<td class="text-center"><a class="btn btn-link btn-xs"
+							th:href="@{/titulos/{codigo}(codigo=${titulo.codigo})}"> <i
+								class="fas fa-edit"></i>
+						</a> <a class="btn btn-link btn-xs"
+							th:href="@{/titulos/{codigo}(codigo=${titulo.codigo})}"
+							data-toggle="modal" data-target="#confirmacaoExclusaoModal" th:attr="data-codigo=${titulo.codigo}">
+								<i class="fa fa-times"></i>
+						</a></td>
 					</tr>
 					<tr>
-						<td colspan="6" th:if="${#lists.isEmpty(titulos)}">Nenhum titulo foi encontrado</td>
+						<td colspan="6" th:if="${#lists.isEmpty(titulos)}">Nenhum
+							titulo foi encontrado</td>
 					</tr>
 				</tbody>
 			</table>
 		</div>
+		<div layout:insert="DialogoConfirmacaoExclusao"></div>
 	</div>
+
+
+
+
 
 </section>
 
