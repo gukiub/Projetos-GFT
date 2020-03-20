@@ -8,9 +8,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.validation.Errors;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.gft.cobranca.model.StatusTitulo;
 import com.gft.cobranca.model.Titulo;
@@ -19,41 +21,51 @@ import com.gft.cobranca.repository.Titulos;
 @Controller
 @RequestMapping("/titulos")
 public class TituloController {
-	
+
+	private static final String CADASTRO_VIEW = "cadastroTitulo";
+
 	@Autowired
 	private Titulos titulos;
-	
+
 	@RequestMapping("/novo")
 	public ModelAndView novo() {
-		ModelAndView mv = new ModelAndView("cadastroTitulo");
+		ModelAndView mv = new ModelAndView(CADASTRO_VIEW);
 		mv.addObject(new Titulo());
 		return mv;
 	}
-	
+
 	@RequestMapping(method = RequestMethod.POST)
-	public ModelAndView salvar(@Validated Titulo titulo, Errors errors) {
-		ModelAndView mv = new ModelAndView("cadastroTitulo");
-		if(errors.hasErrors()){		
-			return mv;
+	public String salvar(@Validated Titulo titulo, Errors errors, RedirectAttributes attributes) {
+		if (errors.hasErrors()) {
+			return CADASTRO_VIEW;
 		}
-		
+
 		// TODO: Salvar no banco de dados
 		titulos.save(titulo);
-		mv.addObject("mensagem", "Titulo salvo com sucesso!");
-		return mv;
+		attributes.addFlashAttribute("mensagem", "Titulo salvo com sucesso!");
+		return "redirect:/titulos/novo";
 	}
 
-	
 	@RequestMapping
 	public ModelAndView pesquisar() {
 		List<Titulo> todosTitulos = titulos.findAll();
-		ModelAndView mv = new ModelAndView("PesquisaTitulos");
+		ModelAndView mv = new ModelAndView(CADASTRO_VIEW);
+		System.out.println("aaaaaaaaaaaaaaa");
 		mv.addObject("titulos", todosTitulos);
 		return mv;
 	}
-	
+
+	@RequestMapping("{codigo}")
+	public ModelAndView edicao(@PathVariable Long codigo) {
+		Titulo titulo = titulos.findById(codigo).get();
+
+		ModelAndView mv = new ModelAndView(CADASTRO_VIEW);
+		mv.addObject(titulo);
+		return mv;
+	}
+
 	@ModelAttribute("statusTitulo")
-	public List<StatusTitulo> todosStatusTitulo(){
+	public List<StatusTitulo> todosStatusTitulo() {
 		return Arrays.asList(StatusTitulo.values());
 	}
 }

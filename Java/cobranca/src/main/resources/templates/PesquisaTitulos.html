@@ -40,7 +40,11 @@
 						<td class="text-center">
 							<span class="badge" th:text="${titulo.status.descricao}" th:classappend="${titulo.pendente ? 'badge-danger' : 'badge-success'}">Sucess</span>
 						</td>
-						<td class="text-center"></td>
+						<td class="text-center">
+							<a class="btn btn-link btn-xs" th:href="titulos/{codigo}">
+								<i class="fas fa-edit"></i>
+							</a>
+						</td>
 					</tr>
 					<tr>
 						<td colspan="6" th:if="${#lists.isEmpty(titulos)}">Nenhum titulo foi encontrado</td>
