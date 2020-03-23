@@ -1,12 +1,18 @@
 package com.gft.cobranca.Controller;
 
+import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.CustomDateEditor;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.Errors;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,6 +23,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.gft.cobranca.model.StatusTitulo;
 import com.gft.cobranca.model.Titulo;
 import com.gft.cobranca.repository.Titulos;
+import com.gft.cobranca.service.CadastroTituloService;
 
 @Controller
 @RequestMapping("/titulos")
@@ -26,6 +33,9 @@ public class TituloController {
 
 	@Autowired
 	private Titulos titulos;
+	
+	@Autowired
+	private CadastroTituloService cadastroTituloService;
 
 	@RequestMapping("/novo")
 	public ModelAndView novo() {
@@ -41,9 +51,14 @@ public class TituloController {
 		}
 
 		// TODO: Salvar no banco de dados
-		titulos.save(titulo);
-		attributes.addFlashAttribute("mensagem", "Titulo salvo com sucesso!");
-		return "redirect:/titulos/novo";
+		try {
+			cadastroTituloService.salvar(titulo);
+			attributes.addFlashAttribute("mensagem", "Titulo salvo com sucesso!");
+			return "redirect:/titulos/novo";
+		} catch (IllegalArgumentException e) {
+			errors.rejectValue("dataVencimento", null, e.getMessage());
+			return CADASTRO_VIEW;
+		}
 	}
 
 	@RequestMapping
@@ -61,13 +76,14 @@ public class TituloController {
 		return mv;
 	}
 
-	@RequestMapping(value="{codigo}", method = RequestMethod.DELETE)
-	public String excluir(@PathVariable Long codigo) {
-		titulos.deleteById(codigo);
+	@RequestMapping(value = "{codigo}", method = RequestMethod.POST)
+	public String excluir(@PathVariable Long codigo, RedirectAttributes attributes) {
+		cadastroTituloService.excluir(codigo);
 		
+		attributes.addFlashAttribute("mensagem", "Titulo excluido com sucesso!");
 		return "redirect:/titulos";
 	}
-	
+
 	
 	@ModelAttribute("statusTitulo")
 	public List<StatusTitulo> todosStatusTitulo() {
@@ -75,6 +91,9 @@ public class TituloController {
 	}
 	
 	
-	
-	
+	@InitBinder
+    public void initBinder(WebDataBinder binder) {
+        binder.registerCustomEditor(Date.class, new CustomDateEditor(new SimpleDateFormat("yyyy-MM-dd"), true));
+    }
+
 }

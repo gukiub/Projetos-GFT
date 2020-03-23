@@ -10,8 +10,9 @@
 <section layout:fragment="conteudo">
 	<form class="form-horizontal" method="POST" action="/titulos"
 		th:object="${titulo}">
-		
-		<div layout:insert="Mensagem"></div>
+
+		<div layout:insert="MensagemGeral"></div>
+		<div layout:insert="MensagemErro"></div>
 
 
 		<div class="card">
@@ -22,31 +23,39 @@
 				</div>
 			</div>
 			<div class="card-body">
-			<input type="hidden" th:field="*{codigo}">
+				<input type="hidden" th:field="*{codigo}">
 				<blockquote class="blockquote mb-0">
 					<div class="form-group">
 						<label for="descricao" class="col-sm-2 control-label">Descrição</label>
 						<div class="col-sm-4">
 							<input type="text" class="form-control" id="descricao"
-								th:field="*{descricao}" th:classappend="${#fields.hasErrors('descricao')} ? is-invalid" />
+								th:field="*{descricao}"
+								th:classappend="${#fields.hasErrors('descricao')} ? is-invalid" />
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="dataVencimento" class="col-sm-2 control-label">Data
 							de vencimento</label>
 						<div class="col-sm-2">
-							<input type="text" class="form-control" id="dataVencimento"
-								th:field="*{dataVencimento}" th:classappend="${#fields.hasErrors('dataVencimento')} ? is-invalid" />
-						</div>
-					</div>
-					<div class="form-group" >
-						<label for="valor" class="col-sm-2 control-label">Valor</label>
-						<div class="col-sm-2">
-							<input type="text" class="form-control" id="valor" th:field="*{valor}" th:classappend="${#fields.hasErrors('valor')} ? is-invalid" />
+							<input class="form-control" id="dataVencimento" type="text"
+								th:field="*{dataVencimento}"
+								th:classappend="${#fields.hasErrors('dataVencimento')} ? is-invalid"
+								data-provide="datepicker" data-date-format="dd/mm/yyyy"
+								data-date-language="pt-BR" data-date-autoclose="true"
+								data-date-today-highlight="true" data-date-orientation="bottom" />
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="status" class="col-sm-2 control-label" th:field="*{status}">Status</label>
+						<label for="valor" class="col-sm-2 control-label">Valor</label>
+						<div class="col-sm-2">
+							<input type="text" class="form-control js-currency" id="valor"
+								th:field="*{valor}"
+								th:classappend="${#fields.hasErrors('valor')} ? is-invalid" />
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="status" class="col-sm-2 control-label"
+							th:field="*{status}">Status</label>
 						<div class="col-sm-2">
 							<select class="form-control" id="status" th:field="*{status}">
 								<option th:each="status : ${statusTitulo}" th:value="${status}"

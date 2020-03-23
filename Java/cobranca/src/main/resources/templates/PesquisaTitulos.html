@@ -11,6 +11,8 @@
 
 <section layout:fragment="conteudo">
 
+	<div layout:insert="MensagemGeral"></div>
+
 	<div class="card">
 		<div class="card-header">
 			<div class="clearfix">
@@ -42,12 +44,19 @@
 							th:classappend="${titulo.pendente ? 'badge-danger' : 'badge-success'}">Sucess</span>
 						</td>
 						<td class="text-center"><a class="btn btn-link btn-xs"
-							th:href="@{/titulos/{codigo}(codigo=${titulo.codigo})}"> <i
-								class="fas fa-edit"></i>
+							th:href="@{/titulos/{codigo}(codigo=${titulo.codigo})}"
+							title="Editar" rel="tooltip" data-placement="top"> <span
+								class="fas fa-edit"></span>
 						</a> <a class="btn btn-link btn-xs"
 							th:href="@{/titulos/{codigo}(codigo=${titulo.codigo})}"
-							data-toggle="modal" data-target="#confirmacaoExclusaoModal" th:attr="data-codigo=${titulo.codigo}">
-								<i class="fa fa-times"></i>
+							data-toggle="modal" data-target="#confirmacaoExclusaoModal"
+							th:attr="data-codigo=${titulo.codigo}, data-descricao=${titulo.descricao}"
+							title="Excluir" rel="tooltip" data-placement="top"> <span
+								class="fa fa-times"></span>
+						</a> <a class="btn btn-link btn-xs js-atualizar-status"
+							th:if="${titulo.pendente}"> <span class="far fa-check-circle"
+								style="color: #007bff;" title="Receber" rel="tooltip"
+								data-placement="top" th:href="@{/titulos/{codigo}/receber(codigo=${titulo.codigo})}"></span>
 						</a></td>
 					</tr>
 					<tr>
