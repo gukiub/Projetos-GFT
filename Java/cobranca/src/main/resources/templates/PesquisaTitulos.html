@@ -22,6 +22,22 @@
 			</div>
 		</div>
 		<div class="card-body">
+			<form method="GET" class="form-horizontal" th:object="${filtro}">
+				<div class="form-group">
+					<div class="col-sm-4">
+						<div class="input-group" name="descricao">
+							<input class="form-control" placeholder="Qual titulo você procura?" autofocus="autofocus" th:field="*{descricao}">
+							<span class="input-group-btn">
+								<button type="submit" class="btn btn-outline-dark">
+									<i class="fas fa-search"></i>
+								</button>
+							</span>
+						</div>
+					</div>
+				</div>
+			</form>
+			
+			<div class="table-responsive">
 			<table class="table table-bordered table-striped">
 				<thead>
 					<tr>
@@ -39,8 +55,8 @@
 						<td class="text-center" th:text="${titulo.descricao}"></td>
 						<td class="text-center" th:text="${{titulo.dataVencimento}}"></td>
 						<td class="text-center" th:text="|R$ ${{titulo.valor}}|"></td>
-						<td class="text-center"><span class="badge"
-							th:text="${titulo.status.descricao}"
+						<td class="text-center" th:attr="data-role=${titulo.codigo}"><span
+							class="badge" th:text="${titulo.status.descricao}"
 							th:classappend="${titulo.pendente ? 'badge-danger' : 'badge-success'}">Sucess</span>
 						</td>
 						<td class="text-center"><a class="btn btn-link btn-xs"
@@ -53,10 +69,11 @@
 							th:attr="data-codigo=${titulo.codigo}, data-descricao=${titulo.descricao}"
 							title="Excluir" rel="tooltip" data-placement="top"> <span
 								class="fa fa-times"></span>
-						</a> <a class="btn btn-link btn-xs js-atualizar-status"
-							th:if="${titulo.pendente}"> <span class="far fa-check-circle"
+						</a> <a class="btn btn-link btn-xs" th:if="${titulo.pendente}"> <span
+								class="far fa-check-circle js-atualizar-status"
 								style="color: #007bff;" title="Receber" rel="tooltip"
-								data-placement="top" th:href="@{/titulos/{codigo}/receber(codigo=${titulo.codigo})}"></span>
+								data-placement="top" th:attr="data-codigo=${titulo.codigo}"
+								th:href="@{/titulos/{codigo}/receber(codigo=${titulo.codigo})}"></span>
 						</a></td>
 					</tr>
 					<tr>
@@ -68,7 +85,7 @@
 		</div>
 		<div layout:insert="DialogoConfirmacaoExclusao"></div>
 	</div>
-
+	</div>
 
 
 
