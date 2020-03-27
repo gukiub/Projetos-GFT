@@ -8,16 +8,31 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
 @Entity
 public class Autor {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	
+	@JsonInclude(Include.NON_NULL)
+	@NotEmpty(message = "O autor deve possuir um nome")
 	private String nome;
+	
+	@JsonInclude(Include.NON_NULL)
+	@JsonFormat(pattern = "dd/MM/yyyy")
+	@NotNull(message = "a data de nascimento é obrigatória")
 	private Date nascimento;
+	
+	@JsonInclude(Include.NON_NULL)
+	@NotNull(message = "nacionalidade é obrigatória")
 	private String nacionalidade;
 	
 	@OneToMany(mappedBy = "autor")
