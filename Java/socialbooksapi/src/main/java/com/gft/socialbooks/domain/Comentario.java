@@ -18,21 +18,28 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import io.swagger.annotations.ApiModelProperty;
+
+//@ApiModel(value = "Comentarios", description = "Representa comentarios de um livro")
 @Entity
 public class Comentario {
 	
+	@ApiModelProperty(example = "1")
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
+	@ApiModelProperty(example = "Aqui jás um comentario")
 	@NotEmpty(message = "O comentario deve ser preenchido")
 	@Size(max = 1500, message = "O comentario não pode conter mais de 1500 caracteres.")
 	@JsonProperty("comentario")
 	private String texto;
 	
+	@ApiModelProperty(example = "Robson")
 	@JsonInclude(Include.NON_NULL)
 	private String usuario;
 	
+	@ApiModelProperty(example = "20/10/1800")
 	@JsonInclude(Include.NON_NULL)
 	@JsonFormat(pattern = "dd/MM/yyyy")
 	private Date data;
@@ -41,7 +48,7 @@ public class Comentario {
 	@JoinColumn(name = "LIVRO_ID")
 	@JsonIgnore
 	private Livro livro;
-	
+
 	public Long getId() {
 		return id;
 	}

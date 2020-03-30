@@ -18,17 +18,22 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
+import io.swagger.annotations.ApiModelProperty;
+
 @Entity
 public class Livro {
 
+	@ApiModelProperty(example = "1")
 	@JsonInclude(Include.NON_NULL)
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
+	@ApiModelProperty(example = "Game of thrones")
 	@NotEmpty(message = "O livro deve possuir um nome")
 	private String nome;
 
+	@ApiModelProperty(example = "10/10/1500")
 	@JsonInclude(Include.NON_NULL)
 	@JsonFormat(pattern = "dd/MM/yyyy")
 	@NotNull(message = "Campo publicação é obrigatória")
@@ -39,10 +44,12 @@ public class Livro {
 	@JsonInclude(Include.NON_NULL)
 	private Autor autor;
 
+	@ApiModelProperty(example = "R.R.Martin")
 	@JsonInclude(Include.NON_NULL)
 	@NotNull(message = "a editora é obrigatória")
 	private String editora;
 
+	@ApiModelProperty(example = "Este é um livro que aborda muita coisa")
 	@JsonInclude(Include.NON_NULL)
 	@NotEmpty(message = "O resumo é obrigatório")
 	@Size(max = 1500, message = "O resumo não pode conter mais de 1500 caracteres")
