@@ -8,6 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.validation.constraints.NotEmpty;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -18,11 +19,16 @@ public class Usuario implements UserDetails {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
-
+	private static final long serialVersionUID = 8903173717355872109L;
+	
 	@Id
+	@NotEmpty(message = "Por favor preencha o login")
 	private String login;
+	
+	@NotEmpty(message = "Qual seu nome?")
 	private String nomeCompleto;
+	
+	@NotEmpty(message = "preencha uma senha")
 	private String senha;
 
 	@ManyToMany

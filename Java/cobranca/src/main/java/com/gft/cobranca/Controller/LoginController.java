@@ -1,8 +1,10 @@
 package com.gft.cobranca.Controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.Errors;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -12,7 +14,14 @@ import com.gft.cobranca.model.Usuario;
 import com.gft.cobranca.service.CadastroUsuarioService;
 
 @Controller
+@RequestMapping("/")
 public class LoginController {
+	
+	@Autowired
+	private CadastroUsuarioService ur;
+	
+	private static final String REGISTRO_VIEW = "registro";
+	
 	@RequestMapping
 	public String home() {
 		return "Inicio";
@@ -20,26 +29,19 @@ public class LoginController {
 	
 	@RequestMapping("/registro")
 	public ModelAndView novo() {
-		ModelAndView mv = new ModelAndView("/");
+		ModelAndView mv = new ModelAndView(REGISTRO_VIEW);
 		mv.addObject(new Usuario());
 		return mv;
 	}
 	
-	@RequestMapping(method = RequestMethod.POST)
+	@RequestMapping(method = RequestMethod.POST, value = "/registro")
 	public String salvar(@Validated Usuario usuario, Errors errors, RedirectAttributes attributes) {
 		if (errors.hasErrors()) {
 			return "registro";
 		}
-
-		// TODO: Salvar no banco de dados
-		try {
-			CadastroUsuarioService.salvar(usuario);
+			ur.salvar(usuario);
 			attributes.addFlashAttribute("mensagem", "Titulo salvo com sucesso!");
-			return "redirect:/titulos/novo";
-		} catch (IllegalArgumentException e) {
-			errors.rejectValue("dataVencimento", null, e.getMessage());
-			return CADASTRO_VIEW;
-		}
+			return "redirect:/registro";
 	}
 
 	
