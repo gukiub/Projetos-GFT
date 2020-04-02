@@ -1,10 +1,10 @@
 package com.gft.cobranca.Controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.Errors;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -39,8 +39,9 @@ public class LoginController {
 		if (errors.hasErrors()) {
 			return "registro";
 		}
+			usuario.setSenha(new BCryptPasswordEncoder().encode(usuario.getSenha()));
 			ur.salvar(usuario);
-			attributes.addFlashAttribute("mensagem", "Titulo salvo com sucesso!");
+			attributes.addFlashAttribute("mensagem", "salvo com sucesso!");
 			return "redirect:/registro";
 	}
 
