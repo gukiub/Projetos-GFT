@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Dialog for Alert</string>
+    <string name="hello_world_teste_de_alerta">Hello World! Teste de alerta</string>
+    <string name="alerta">Alerta</string>
+</resources>
